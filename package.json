@@ -1,0 +1,20 @@
+{
+  "name": "csd",
+  "version": "0.0.0",
+  "description": "Composite Scrap Database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://cdspooner.com/spoonb/csd"
+  },
+  "author": "Brett Witherspoon",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.2",
+    "pug": "^2.0.0-rc.4"
+  }
+}
