@@ -1,12 +1,19 @@
 // Composite scrap database application
 const path = require('path')
 const express = require('express')
-const app = express()
 
-app.use(express.static(path.join(__dirname, 'public')))
+const database = require('./routes/database')
+
+const app = express()
 
 app.set('view engine', 'pug')
 
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Router-level middleware
+app.use('/database', database)
+
+// Application-level middleware
 app.get('/', function (req, res) {
   res.render('index')
 })
@@ -17,10 +24,6 @@ app.get('/about', function (req, res) {
 
 app.get('/modules', function (req, res) {
   res.render('modules')
-})
-
-app.get('/database', function (req, res) {
-  res.render('database')
 })
 
 app.get('/resources', function (req, res) {
