@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/*', function (req, res) {
   res.render('database', {
-    path: req.path
+    path: req.path.slice(1).split('/')
   })
 })
 
