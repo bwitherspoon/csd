@@ -18,20 +18,24 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/about', function (req, res) {
-  res.render('about')
+app.get('/contact', function (req, res) {
+  res.render('contact')
 })
 
-app.get('/modules', function (req, res) {
-  res.render('modules')
+app.get('/education', function (req, res) {
+  res.render('education')
+})
+
+app.get('/industry', function (req, res) {
+  res.render('industry')
 })
 
 app.get('/resources', function (req, res) {
   res.render('resources')
 })
 
-app.get('/contact', function (req, res) {
-  res.render('contact')
+app.get('/modules', function (req, res) {
+  res.render('modules')
 })
 
 app.listen(8080)
