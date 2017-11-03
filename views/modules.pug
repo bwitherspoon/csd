@@ -1,0 +1,25 @@
+//- Modules
+extends layout
+
+block content
+  // Generated placeholder modules and navigation
+  div(class='row')
+    div(class='col-3')
+      div(class='list-group' id='list-tab' role='tablist')
+        - const num = 5
+        - for (var i = 1; i < num + 1; i++) {
+            a(class='list-group-item list-group-item-action' id='list-module-'+ i +'-list' data-toggle='list' href='#list-module-' + i role='tab') Module #{i}
+        - }
+    div(class='col')
+      div(class='tab-content' id='nav-tabContent')
+        - for (var i = 1; i < num + 1; i++) {
+            div(class='tab-pane fade show' id='list-module-' + i role='tabpanel')
+              h2 Module #{i}
+              p Introduction content
+              h4 Topic #{i}a
+              p Topic content
+              h4 Topic #{i}b
+              p Topic content
+              h4 Topic #{i}c
+              p Topic content
+        - }

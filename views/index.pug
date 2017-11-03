@@ -1,77 +1,8 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description' content='A resource to find information on composite scrap, available composite scrap, and existing composite recyclers.')
-    title Composites Recycling
-    link(
-      rel='stylesheet'
-      href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css'
-      integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb'
-      crossorigin='anonymous'
-    )
-    link(href='style.css' rel='stylesheet')
-  body
-    div(class='container')
-      h3(class='text-muted') Composites Recycling
-      nav(class='navbar navbar-expand-lg navbar-light bg-light mb-3')
-        button(
-          class='navbar-toggler'
-          type='button'
-          data-toggle='collapse'
-          data-target='#navbarNavAltMarkup'
-          aria-controls='navbarNavAltMarkup'
-        )
-          span(class='navbar-toggler-icon')
-        div(class='collapse navbar-collapse justify-content-md-center' id='navbarNavAltMarkup')
-          div(class='navbar-nav')
-            a(class='nav-item nav-link active' href='#') Home
-            a(class='nav-item nav-link' href='#') About
-            a(class='nav-item nav-link' href='#') Resources
-            a(class='nav-item nav-link' href='#') Contact
-    
-      main(role='main')
-        div(class='jumbotron')
-          h1(class='display-4') Composite Scrap Database
-          p(class='lead') Find additional information on composite scrap, available composite scrap, and existing composite recyclers.
-          p: a(class='btn btn-lg btn-primary' href='#' role='button') Search
+//- Home
+extends layout
 
-        div(class='row')
-          div(class='col-3')
-            div(class='list-group' id='list-tab' role='tablist')
-              - const num = 5
-              - for (var i = 1; i < num + 1; i++) {
-                  a(class='list-group-item list-group-item-action' id='list-module-'+ i +'-list' data-toggle='list' href='#list-module-' + i role='tab') Module #{i}
-              - }
-          div(class='col')
-            div(class='tab-content' id='nav-tabContent')
-              - for (var i = 1; i < num + 1; i++) {
-                  div(class='tab-pane fade show' id='list-module-' + i role='tabpanel')
-                    h2 Module #{i}
-                    p Introduction content
-                    h4 Topic #{i}a
-                    p Topic content
-                    h4 Topic #{i}b
-                    p Topic content
-                    h4 Topic #{i}c
-                    p Topic content
-              - }
-
-                
-    // Bootstrap JavaScript
-    script(
-        src='https://code.jquery.com/jquery-3.2.1.slim.min.js'
-        ntegrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN'
-        crossorigin='anonymous'
-    )
-    script(
-      src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js'
-      integrity='sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh'
-      crossorigin='anonymous'
-    )
-    script(
-      src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js'
-      integrity='sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ' 
-      crossorigin='anonymous'
-    )
+block content
+  div(class='jumbotron')
+    h1(class='display-4') Composite Scrap Database
+    p(class='lead') Find additional information on composite scrap, available composite scrap, and existing composite recyclers.
+    p: a(class='btn btn-lg btn-primary' href='#' role='button') Search
