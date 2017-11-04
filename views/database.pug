@@ -4,8 +4,10 @@ block scripts
   script(src='/js/database.js')
 
 block content
-  if options !== null
-    div(class='row justify-content-center')
+  div(class='row justify-content-center')
+    h1 Composite Scrap Database
+  div(class='row justify-content-center')
+    if options !== null
       select(class='form-control' onchange='query(this)' style='width: 20rem')
         if options.length == 0
           option(hidden disabled selected value) No Results
@@ -13,8 +15,7 @@ block content
           option(hidden disabled selected value) Select an Option
         for opt in options
           option(value=opt.toLowerCase().replace(' ', '-'))= opt
-  else
-    div(class='row justify-content-center')
+    else
       div(class='card' style='width: 40rem')
         div(class='card-body')
           h4(class='card-title') PA-6 / 50 wt. % GF Chopped Unidirectional Tape
