@@ -2,24 +2,25 @@
 extends layout
 
 block content
-  // Generated placeholder modules and navigation
   div(class='row')
-    div(class='col-3')
+    div(class='col-4')
       div(class='list-group' id='list-tab' role='tablist')
-        - const num = 5
-        - for (var i = 1; i < num + 1; i++) {
-            a(class='list-group-item list-group-item-action' id='list-module-'+ i +'-list' data-toggle='list' href='#list-module-' + i role='tab') Module #{i}
-        - }
+        -
+          var titles = ['Overview on Materials Recycling',
+                        'Composite Manufacturing Methods: Thermosets and Thermoplastics',
+                        'Challenges of Recycling Composites I',
+                        'Challenges of Recycling Composites II',
+                        'Sources of Scrap Materials in Production Facilities',
+                        'Methods of Recycling Thermosets',
+                        'Methods of Recycling Thermoplastics',
+                        'Considering Components/Parts for Manufacture from Recycled Materials',
+                        'Design for Recycling',
+                        'Understanding Public Perception and Consumer Habits']
+        for value, index in titles
+          a(class='list-group-item list-group-item-action' id='module-'+index+'-list' data-toggle='list' href='#module-'+index role='tab')= value
+
     div(class='col')
       div(class='tab-content' id='nav-tabContent')
-        - for (var i = 1; i < num + 1; i++) {
-            div(class='tab-pane fade show' id='list-module-' + i role='tabpanel')
-              h2 Module #{i}
-              p Introduction content
-              h4 Topic #{i}a
-              p Topic content
-              h4 Topic #{i}b
-              p Topic content
-              h4 Topic #{i}c
-              p Topic content
+        - for (var i = 1; i < 10 + 1; i++) {
+            div(class='tab-pane fade show' id='module-'+i role='tabpanel')
         - }
