@@ -41,6 +41,10 @@ app.get('/modules', function (req, res) {
   res.render('modules')
 })
 
+app.get('/folder', function (req, res) {
+  res.render('folder')
+})
+
 app.listen(port, function () {
   console.log('Applicaton running on port', port)
 })
