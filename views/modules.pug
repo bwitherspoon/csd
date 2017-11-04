@@ -6,21 +6,23 @@ block content
     div(class='col-4')
       div(class='list-group' id='list-tab' role='tablist')
         -
-          var titles = ['Overview on Materials Recycling',
-                        'Composite Manufacturing Methods: Thermosets and Thermoplastics',
-                        'Challenges of Recycling Composites I',
-                        'Challenges of Recycling Composites II',
-                        'Sources of Scrap Materials in Production Facilities',
-                        'Methods of Recycling Thermosets',
-                        'Methods of Recycling Thermoplastics',
-                        'Considering Components/Parts for Manufacture from Recycled Materials',
-                        'Design for Recycling',
-                        'Understanding Public Perception and Consumer Habits']
+          var titles = ['Module 1: Overview on Materials Recycling',
+                        'Module 2: Composite Manufacturing Methods: Thermosets and Thermoplastics',
+                        'Module 3: Challenges of Recycling Composites I',
+                        'Module 4: Challenges of Recycling Composites II',
+                        'Module 5: Sources of Scrap Materials in Production Facilities',
+                        'Module 6: Methods of Recycling Thermosets',
+                        'Module 7: Methods of Recycling Thermoplastics',
+                        'Module 8: Considering Components/Parts for Manufacture from Recycled Materials',
+                        'Module 9: Design for Recycling',
+                        'Module 10: Understanding Public Perception and Consumer Habits']
         for value, index in titles
           a(class='list-group-item list-group-item-action' id='module-'+index+'-list' data-toggle='list' href='#module-'+index role='tab')= value
 
     div(class='col')
+      // Generate tabs for the empty modules
       div(class='tab-content' id='nav-tabContent')
-        - for (var i = 1; i < 10 + 1; i++) {
+        - for (var i = 0; i < titles.length; i++) {
             div(class='tab-pane fade show' id='module-'+i role='tabpanel')
+              h1= titles[i]
         - }
