@@ -8,6 +8,7 @@ const port = process.env.PORT || 8080
 
 const app = express()
 
+app.set('views', __dirname + '/views')
 app.set('view engine', 'pug')
 
 app.use(express.static(path.join(__dirname, 'public')))
