@@ -4,10 +4,9 @@ const express = require('express')
 
 const database = require('./routes/database')
 
-const app = express()
+const port = process.env.PORT || 8080
 
-const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080
-const ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || 'localhost'
+const app = express()
 
 app.set('view engine', 'pug')
 
@@ -41,4 +40,6 @@ app.get('/modules', function (req, res) {
   res.render('modules')
 })
 
-app.listen(port, ip)
+app.listen(port, function () {
+  console.log('Applicaton running on port', port)
+})
