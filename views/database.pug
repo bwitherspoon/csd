@@ -1,13 +1,24 @@
 extends layout
 
+block scripts
+  script(src='/js/database.js')
+
 block content
-  div(class='row justify-content-center')
-    p #{path.join(' - ')}
-  div(class='row justify-content-center')
-    div(class='card' style='width: 30rem;')
-      div(class='card-body')
-        p Material:
-        p Origin:
-        p Method:
-        p Location:
-        p Quantity:
+  if options !== null
+    div(class='row justify-content-center')
+      select(class='form-control' onchange='query(this)' style='width: 20rem')
+        if options.length == 0
+          option(hidden disabled selected value) No Results
+        else
+          option(hidden disabled selected value) Select an Option
+        for opt in options
+          option(value=opt.toLowerCase().replace(' ', '-'))= opt
+  else
+    div(class='row justify-content-center')
+      div(class='card' style='width: 30rem;')
+        div(class='card-body')
+          p Material:
+          p Origin:
+          p Method:
+          p Location:
+          p Quantity:
