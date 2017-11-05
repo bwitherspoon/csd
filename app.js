@@ -25,12 +25,8 @@ app.get('/contact', function (req, res) {
   res.render('contact')
 })
 
-app.get('/education', function (req, res) {
-  res.render('education')
-})
-
-app.get('/industry', function (req, res) {
-  res.render('industry')
+app.get('/overview', function (req, res) {
+  res.render('overview')
 })
 
 app.get('/resources', function (req, res) {
