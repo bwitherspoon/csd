@@ -6,7 +6,7 @@ block content
     div(class='col-4')
       div(class='list-group' id='list-tab' role='tablist')
         -
-          var titles = ['Module 1: Overview on Materials Recycling',
+          const titles = ['Module 1: Overview on Materials Recycling',
                         'Module 2: Composite Manufacturing Methods: Thermosets and Thermoplastics',
                         'Module 3: Challenges of Recycling Composites I',
                         'Module 4: Challenges of Recycling Composites II',
@@ -20,9 +20,218 @@ block content
           a(class='list-group-item list-group-item-action' id='module-'+index+'-list' data-toggle='list' href='#module-'+index role='tab')= value
 
     div(class='col')
-      // Generate tabs for the empty modules
       div(class='tab-content' id='nav-tabContent')
-        - for (var i = 0; i < titles.length; i++) {
-            div(class='tab-pane fade show' id='module-'+i role='tabpanel')
-              h1= titles[i]
-        - }
+        //- Module 1
+        div(class='tab-pane fade' id='module-0' role='tabpanel')
+          h3 Module 1: Overview on Materials Recycling
+            h4
+              b 1.a
+              |  A Brief Introduction to Composites
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li What are composites?
+                  li Advantages/Disadvantages
+                  li Their limits to Sustainability
+                  li Opportunities for composites
+              dt Objectives
+              dd
+                ul
+                  li Learn appropriate terminology to composites field and manufacturing industry
+                  li Learn why composite applications are ever-increasing.
+                  li Learn how composites are seen as a “gift” as well as a “burden”.
+            h4
+              b 1.b
+              |  “Waste” versus “Scrap”
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Different types of waste
+                    ul(type='list-style-type:square')
+                      li Defining MSW, E-waste, composites, etc.
+                      li The difference between terms ”waste” and “scrap”
+                  li Current recycling success stories
+                    ul(type='list-style-type:square')
+                      li Metals, plastics, etc.
+                  li How much we generate vs. produce vs. recycle
+                  li Macro trends in the world that push recycling’s urgency
+              dt Objectives
+              dd
+                ul
+                  li Learn appropriate terminology of different types of waste and the industries they are associated with.
+                  li Learn about current materials recycling success stories.
+                  li Learn statistics on how much scrap is generated versus how much is currently recycled as it applies to macro trends in the world.
+            h4
+              b 1.c
+              |  Recycling Trends
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Public Perception and Consumer Habits
+                  li Corporations and government’s standpoints
+                  li Non-government organizations
+                  li Life Cycle Assessment
+                  li Landfill space and statistics and public health/environmental harm
+                  li Where to begin?
+                  li E-waste vs. construction vs. consumer vs. industry, etc.
+              dt Objectives
+              dd
+                ul
+                  li Learn how consumer desire and perception pushes the need for composite recycling.
+                  li Learn about government regulations and initiatives.
+                  li Learn about non-governmental recycling initiatives.
+                  li Learn about what it takes to keep up landfills, the decline in available landfill space, and the harm of landfilling to the environment and public health.
+                  li Learn statistics on manufacturing waste and why industry is the best place to start recycling.
+            h4
+              b 1.d
+              |  Industry Perspective on Recyclings
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li CRTEP findings from subject matter experts (industry and academic) on two main statements:
+                  li What are the major challenges that companies face if they are to reduce the volume of scrap material going into landfills?
+                  li As new composite reclamation processes and technologies are developed what new demands will be placed on composite technicians?
+                  li A brief introduction to various logistics associated with composite recycling at the manufacturing level
+              dt Objectives
+              dd
+                ul
+                  li Learn how industry perceives composite recycling and what they see as the biggest challenges.
+                  li Learn what demands are placed on composite technicians as composite recycling is introduced.
+                  li Learn what subject matter experts see as logistical problems for composite recycling.
+            h4
+              b 1.e
+              |  Basic Introduction to Current Composite Recycling in Industry
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li a) Basic intro to current thermoset/thermoplastic recycling methods
+                  li b) Associated logistics
+                    ul(type='list-style-type:square')
+                      li Recycling infrastructure; in-house grinding/shredding vs. outsourcing
+                      li Recycling your own scrap vs. selling/giving to another company
+              dt Objectives
+              dd
+                ul
+                  li Learn about current composite recycling methods used in industry.
+                  li Learn about challenges associated with in-house recycling as well as the outsourcing of composite scrap.
+
+          //- Module 5
+        div(class='tab-pane fade' id='module-4' role='tabpanel')
+          h3 Module 5: Sources of Scrap Materials in Production Facilities
+            h4
+              b 5.a
+              |  Six Sources of Manufacturing Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Each source of scrap briefly explained.
+                    ul(type='list-style-type:square')
+                      li Raw material trim-offs, material trim-offs, part trim-offs, machining/finishing scrap, reject parts, end of life components
+                  li Logistics of how the variety of form (and supply) of scrap although from same product adds yet another complexity to composite recycling.
+              dt Objectives
+              dd
+                ul
+                  li Learn the six main waste streams that come from composite manufacturing facilities and how recycling these streams would benefit industry.
+                  li Learn about past and current recycling methodologies for each source of scrap.
+                  li Learn how the source of scrap furthers the complexity of recycling an already complex material.
+            h4
+              b 5.b
+              |  Raw Material and Material Trim-Offs Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Differences and Examples of types of raw material and material trim-off scraps
+                    ul(type='list-style-type:square')
+                      li Cut-offs, scraps from material supplier, nesting scraps etc. 
+                  li Case study of raw material and/or material trim-off scrap
+              dt Objectives
+              dd
+                ul
+                  li Learn the differences between raw material scraps and material trim-offs.
+                  li Learn about current case studies where raw material scraps and material trim-offs have been recycled.
+            h4
+              b 5.c
+              |  Part Trim-Offs Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Eamples of part trim-offs.
+                    ul(type='list-style-type:square')
+                      li Emphasize how varied these can be.
+                  li Case study of part trim-offs.
+                    ul(type='list-style-type:square')
+                      li OEM Trailer siding.
+              dt Objectives
+              dd
+                ul
+                  li Learn the differences between raw material scraps, material trim-offs and part trim-offs.
+                  li Learn about current case studies where part trim-offs have been recycled.
+            h4
+              b 5.d
+              |  Machining/Finishing Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Differences and Examples of previous types of scrap compared to machining/finishing scrap.
+                    ul(type='list-style-type:square')
+                      li Emphasize how varied these can be.
+                  li Case study of machining/finishing scrap.
+                    ul(type='list-style-type:square')
+                      li Finishing residue.
+                      li Trelleborg clamp machining residue.
+              dt Objectives
+              dd
+                ul
+                  li Learn the differences between previous types of scrap as compared to machining/finishing scrap.
+                  li Learn about current case studies where machining and finishing scraps have been recycled.
+            h4
+              b 5.e
+              |  Reject Parts and End of Life Components as Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Differences and examples of reject parts and end of life components.
+                  li Sources of reject parts and end of life components. 
+                  li Case study of reject part LCA
+              dt Objectives
+              dd
+                ul
+                  li Learn the differences between reject parts and end of life components.
+                  li Learn where each come from and why.
+                  li Learn about life cycle assessment in regards to reject parts and end of life components.
+            h4
+              b 5.f
+              |  Storing versus Landfilling versus Outsourcing Scrap
+            dl
+              dt Content
+              dd
+                ol(type='a')
+                  li Storage infrastructure of various forms of manufacturing scrap in one production facility.
+                    ul(type='list-style-type:square')
+                      li Need for environmental scrap storage separate from raw materials (i.e. refrigeration for prepreg scrap)
+                      li Labeling complexity, storage space = money, etc.
+                  li Transportation to a landfill versus transportation of scrap to another company
+                    ul(type='list-style-type:square')
+                      li Who picks up? Who grinds/shreds?, etc.?
+              dt Objectives
+              dd
+                ul
+                  li Learn the complexity behind storing composite scrap as it pertains to form, type and labeling systems.
+                  li Learn of transportation challenges arising from outsourcing scrap and how that compares at cost to landfilling.
+      
+          //- Generate tabs for empty modules
+        - const missing = [...titles.keys()].filter(function (i) { return ![0, 4].includes(i) })
+        each i in missing
+          div(class='tab-pane fade' id='module-'+i role='tabpanel')
+            h3= titles[i]
+        
