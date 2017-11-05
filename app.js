@@ -21,8 +21,8 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/contact', function (req, res) {
-  res.render('contact')
+app.get('/about', function (req, res) {
+  res.render('about')
 })
 
 app.get('/overview', function (req, res) {
@@ -37,8 +37,8 @@ app.get('/modules', function (req, res) {
   res.render('modules')
 })
 
-app.get('/folder', function (req, res) {
-  res.render('folder')
+app.get('/contact', function (req, res) {
+  res.render('contact')
 })
 
 app.listen(port, function () {
