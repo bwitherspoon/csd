@@ -1,13 +1,11 @@
 extends layout
 
 block scripts
-  script(src='/js/database.js')
+  script(src='/js/db.js')
   script(src='/js/nav.js')
   script window.onload = activate('database')
 
 block content
-  div(class='row justify-content-center')
-    h1 Composite Scrap Database
   div(class='row justify-content-center')
     if options !== null
       select(class='form-control' onchange='query(this)' style='width: 20rem')
