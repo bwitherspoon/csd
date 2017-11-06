@@ -20,29 +20,32 @@ html(lang='en')
 
   body
     div(class='container')
-      header(class='header clearfix')
-        //- Buttons
-        div(class='btn-group float-right' role='group')
-          button(type='button' class='btn btn-primary')
-            i(class="fa fa-cog")
-          button(type='button' class='btn btn-primary')
-            i(class="fa fa-folder")
-          button(type='button' class='btn btn-primary')
-            i(class="fa fa-user")
-        //- Navigation
-        ul(class='nav nav-pills')
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-home' href='/') Home
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-about' href='/about') About
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-overview' href='/overview') Overview
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-modules' href='/modules') Modules
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-database' href='/database') Database
-          li(class='nav-item')
-            a(class='nav-link' id='nav-link-contact' href='/contact') Contact
+      header(class='header')
+        div(class='d-flex align-items-center')
+          //- Logo
+          img(class='m-2' src='/images/logo.svg' alt='Composites Recycling' width='64px' height='64px')
+          //- Navigation
+          ul(class='nav nav-pills p-2')
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-home' href='/') Home
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-about' href='/about') About
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-overview' href='/overview') Overview
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-modules' href='/modules') Modules
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-database' href='/database') Database
+            li(class='nav-item')
+              a(class='nav-link' id='nav-link-contact' href='/contact') Contact
+          //- Buttons
+          div(class='btn-group ml-auto p-2' role='group')
+            button(type='button' class='btn btn-primary')
+              i(class="fa fa-cog")
+            button(type='button' class='btn btn-primary')
+              i(class="fa fa-folder")
+            button(type='button' class='btn btn-primary')
+              i(class="fa fa-user")
       
       main(role='main')
         block content
