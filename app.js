@@ -20,23 +20,18 @@ app.use('/database', database)
 app.get('/', function (req, res) {
   res.render('index')
 })
-
 app.get('/about', function (req, res) {
   res.render('about')
 })
-
 app.get('/overview', function (req, res) {
   res.render('overview')
 })
-
 app.get('/resources', function (req, res) {
   res.render('resources')
 })
-
 app.get('/modules', function (req, res) {
   res.render('modules')
 })
-
 app.get('/contact', function (req, res) {
   res.render('contact')
 })
