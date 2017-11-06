@@ -16,9 +16,11 @@ block content
         for opt in options
           option(value=opt.toLowerCase().replace(' ', '-'))= opt
     else
-      div(class='card' style='width: 40rem')
-        div(class='card-body')
+      div(class='card')
+        div(class='card-header')
+        div(class='card-body clearfix')
           h4(class='card-title') PA-6 / 50 wt. % GF Chopped Unidirectional Tape
+          img(class='float-right' alt='Image of material' src='http://cdspooner.com/csd/images/pa6_gf_chopped_tape.png')
           p
             b Material Notes:
             |  Original form was continuous, this scrap comes from trim-offs. Various shapes and sizes.
@@ -36,3 +38,4 @@ block content
             |  500 lbs
           a(class='btn btn-primary mr-2' href='javascript:void(0)') Save
           a(class='btn btn-primary' href='javascript:void(0)') Query
+          
