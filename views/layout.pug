@@ -21,6 +21,7 @@ html(lang='en')
   body
     div(class='container')
       header(class='header clearfix')
+        //- Buttons
         div(class='btn-group float-right' role='group')
           button(type='button' class='btn btn-primary')
             i(class="fa fa-cog")
@@ -28,20 +29,20 @@ html(lang='en')
             i(class="fa fa-folder")
           button(type='button' class='btn btn-primary')
             i(class="fa fa-user")
-        nav
-          ul(class='nav nav-pills')
-            li(class='nav-item')
-              a(class='nav-link' href='/') Home
-            li(class='nav-item')
-              a(class='nav-link' href='/about') About
-            li(class='nav-item')
-              a(class='nav-link' href='/overview') Overview
-            li(class='nav-item')
-              a(class='nav-link' href='/modules') Modules
-            li(class='nav-item')
-              a(class='nav-link' href='/database') Database
-            li(class='nav-item')
-              a(class='nav-link' href='/contact') Contact
+        //- Navigation
+        ul(class='nav nav-pills')
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-home' href='/') Home
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-about' href='/about') About
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-overview' href='/overview') Overview
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-modules' href='/modules') Modules
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-database' href='/database') Database
+          li(class='nav-item')
+            a(class='nav-link' id='nav-link-contact' href='/contact') Contact
       
       main(role='main')
         block content

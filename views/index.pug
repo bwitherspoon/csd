@@ -1,6 +1,11 @@
 //- Home
 extends layout
 
+block scripts
+  script('src=/js/nav.js')
+  script.
+    window.onload = activate('home')
+
 block content
   div(class='jumbotron')
     h1(class='display-3') Composite Scrap Database

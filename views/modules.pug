@@ -1,6 +1,10 @@
 //- Modules
 extends layout
 
+block scripts
+  script(src='/js/nav.js')
+  script window.onload = activate('modules')
+
 block content
   div(class='row')
     div(class='col-4')
