@@ -8,13 +8,17 @@ block scripts
 block content
   div(class='row justify-content-center')
     if options !== null
-      select(class='form-control' onchange='query(this)' style='width: 20rem')
+      select(class='form-control' id='select-search' style='width: 20rem')
         if options.length == 0
           option(hidden disabled selected value) No Results
         else
           option(hidden disabled selected value) Select an Option
         for opt in options
           option(value=opt.toLowerCase().replace(' ', '-'))= opt
+      if options.length == 0
+        a(class='btn btn-danger ml-2' href='/database' role='button') Reset
+      else
+        button(type='button' class='btn btn-success ml-2' onclick='search()') Search
     else
       div(class='card')
         div(class='card-header')
