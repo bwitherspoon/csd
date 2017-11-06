@@ -6,7 +6,10 @@ html(lang='en')
     meta(name='description' content='A resource to find information on composite scrap, available composite scrap, and existing composite recyclers.')
     
     title Composites Recycling
-    
+
+    //- FontAwesom JaveScript
+    script(src="https://use.fontawesome.com/f71a763071.js")
+
     link(
       rel='stylesheet'
       href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css'
@@ -18,8 +21,15 @@ html(lang='en')
   body
     div(class='container')
       header(class='header clearfix')
+        div(class='btn-group float-right' role='group')
+          button(type='button' class='btn btn-primary')
+            i(class="fa fa-cog")
+          button(type='button' class='btn btn-primary')
+            i(class="fa fa-folder")
+          button(type='button' class='btn btn-primary')
+            i(class="fa fa-user")
         nav
-          ul(class='nav nav-pills float-right')
+          ul(class='nav nav-pills')
             li(class='nav-item')
               a(class='nav-link' href='/') Home
             li(class='nav-item')
@@ -32,7 +42,6 @@ html(lang='en')
               a(class='nav-link' href='/database') Database
             li(class='nav-item')
               a(class='nav-link' href='/contact') Contact
-        h3(class='text-muted') Composites Recycling
       
       main(role='main')
         block content
