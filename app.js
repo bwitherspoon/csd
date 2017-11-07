@@ -2,7 +2,7 @@
 const path = require('path')
 const express = require('express')
 
-const database = require('./routes/database')
+const search = require('./routes/search')
 
 const port = process.env.PORT || 8080
 
@@ -14,7 +14,7 @@ app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Router-level middleware
-app.use('/database', database)
+app.use('/search', search)
 
 // Application-level middleware
 app.get('/', function (req, res) {
@@ -23,11 +23,14 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
   res.render('about')
 })
-app.get('/overview', function (req, res) {
-  res.render('overview')
+app.get('/learn', function (req, res) {
+  res.redirect('/learn/modules')
 })
-app.get('/modules', function (req, res) {
+app.get('/learn/modules', function (req, res) {
   res.render('modules')
+})
+app.get('/learn/overview', function (req, res) {
+  res.render('overview')
 })
 app.get('/contact', function (req, res) {
   res.render('contact')

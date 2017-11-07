@@ -1,5 +1,6 @@
 function activate(target) {
-  for (title of ['home', 'about', 'overview', 'modules', 'database', 'contact']) {
+  // FIXME these should not be hardcoded, get them from the parent element
+  for (title of ['home', 'about', 'learn', 'search', 'contact']) {
     let elem = document.getElementById('nav-link-' + title)
     if (elem === null) {
       continue

@@ -12,7 +12,7 @@ const lookup = {
 
 router.get('/', function (req, res) {
   var options = ['Resin', 'Fiber', 'Thermoset Scrap', 'Thermoplastic Scrap']
-  res.render('database', {
+  res.render('search', {
     options: options
   })
 })
@@ -24,7 +24,7 @@ router.get('/*', function (req, res) {
   if (lookup.hasOwnProperty(query)) {
     options = lookup[query]
   }
-  res.render('database', {
+  res.render('search', {
     options: options
   })
 })
