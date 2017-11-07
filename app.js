@@ -26,9 +26,6 @@ app.get('/about', function (req, res) {
 app.get('/overview', function (req, res) {
   res.render('overview')
 })
-app.get('/resources', function (req, res) {
-  res.render('resources')
-})
 app.get('/modules', function (req, res) {
   res.render('modules')
 })
