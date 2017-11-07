@@ -36,6 +36,15 @@ app.get('/contact', function (req, res) {
   res.render('contact')
 })
 
+// Error handling
+app.use(function (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  console.error(err.stack)
+  res.status(500).send('Internal Server Error')
+})
+
 app.listen(port, function () {
   console.log('Applicaton running on port', port)
 })
