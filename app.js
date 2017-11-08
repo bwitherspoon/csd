@@ -2,6 +2,7 @@
 const assert = require('assert')
 const path = require('path')
 const express = require('express')
+const session = require('express-session')
 
 const database = require('./database')
 const search = require('./routes/search')
@@ -13,6 +14,12 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'pug')
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(session({
+  secret: 'crtepcsd',
+  resave: false,
+  saveUninitialized: false
+}))
 
 // Router-level middleware
 app.use('/search', search)

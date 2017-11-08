@@ -9,7 +9,11 @@ const parser = bodyParser.urlencoded({
   extended: false
 })
 
-//router.post('/register', parser, UserController.register)
+router.get('/register', UserController.authenticate, function (req, res) {
+  res.status(200).end()
+})
+router.post('/register', UserController.authenticate, parser, UserController.register)
+
 router.get('/login', function (req, res) {
   res.render('login', {
     failed: false
