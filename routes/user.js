@@ -10,6 +10,11 @@ const parser = bodyParser.urlencoded({
 })
 
 //router.post('/register', parser, UserController.register)
+router.get('/login', function (req, res) {
+  res.render('login', {
+    failed: false
+  })
+})
 router.post('/login', parser, UserController.login)
 
 module.exports = router

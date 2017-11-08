@@ -26,7 +26,11 @@ module.exports.login = function (req, res) {
       console.error(error.stack)
       res.status(500).end()
     } else if (!user) {
-      res.status(404).end()
+      console.log("User " + req.body.email + " does not exist")
+      res.status(400)
+      res.render('login', {
+        failed: true
+      })
     } else {
       user.verify(req.body.password, function (err, ok) {
         if (err) {
@@ -34,10 +38,13 @@ module.exports.login = function (req, res) {
           res.status(500).end()
         } else if (!ok) {
           console.log("User " + user.name + " failed authentication")
-          res.status(400).end()
+          res.status(400)
+          res.render('login', {
+            failed: true
+          })
         } else {
           console.log("User " + user.name + " passed authentication")
-          res.status(200).end()
+          res.redirect('/')
         }
       })
     }

@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title Composites Recycling - Login
+
+    link(
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css'
+      integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb'
+      crossorigin='anonymous'
+    )
+    link(rel='stylesheet', href='/css/login.css')
+
+  body
+    div(class='container')
+      div(class='row justify-content-center')
+        form(class='form-login w-25' action='/user/login' method='post')
+          div(class='form-group')
+            label(for='email') E-mail
+            input(type='email' name='email' class=failed ? 'form-control is-invalid' : 'form-control' placeholder='E-mail address' required autofocus)
+          div(class='form-group')
+            label(for='password') Password
+            input(type='password' name='password' class=failed ? 'form-control is-invalid' : 'form-control' placeholder='Password' required)
+          div(class='form-group')
+            button(type='submit' class='btn btn-lg btn-primary btn-block') Sign in
