@@ -38,11 +38,11 @@ html(lang='en')
               a(class='nav-link' id='nav-link-contact' href='/contact' class={active: view === 'contact'}) Contact
           //- Buttons
           div(class='btn-group ml-auto p-2' role='group')
-            button(type='button' class='btn btn-primary' onclick='location.pathname=\'/login\'')
+            button(type='button' class='btn btn-primary' onclick=authenticated ? 'location.pathname=\'/user/folder\'' : 'location.pathname=\'/login\'')
               i(class="fa fa-cog")
-            button(type='button' class='btn btn-primary' onclick='location.pathname=\'/login\'')
+            button(type='button' class='btn btn-primary' onclick=authenticated ? 'location.pathname=\'/user/folder\'' : 'location.pathname=\'/login\'')
               i(class="fa fa-folder")
-            button(type='button' class='btn btn-primary' onclick='location.pathname=\'/login\'')
+            button(type='button' class='btn btn-primary' onclick=authenticated ? 'location.pathname=\'/user/logout\'' : 'location.pathname=\'/login\'')
               i(class="fa fa-user")
 
       main(role='main')

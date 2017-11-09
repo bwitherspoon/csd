@@ -67,7 +67,8 @@ module.exports.logout = function (req, res) {
 
 module.exports.folder = function (req, res) {
   res.render('folder', {
-    user: req.session.name
+    user: req.session.name,
+    authenticated: true
   })
 }
 
