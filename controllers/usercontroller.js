@@ -39,14 +39,14 @@ module.exports.login = function (req, res) {
           console.error(err.stack)
           res.status(500).end()
         } else if (!ok) {
-          console.log("User " + user.name + " failed authentication")
+          console.log("User " + user.id + " failed authentication")
           res.status(400)
           res.render('login', {
             failed: true
           })
         } else {
-          console.log("User " + user.name + " passed authentication")
-          req.session.user = user.name
+          console.log("User " + user.id + " passed authentication")
+          req.session.user = user
           res.redirect('/')
         }
       })
@@ -69,7 +69,7 @@ module.exports.logout = function (req, res) {
 
 module.exports.folder = function (req, res) {
   res.render('folder', {
-    user: req.session.user,
+    user: req.session.user.id,
     authenticated: true
   })
 }

@@ -5,17 +5,17 @@ const db = require('../database')
 
 const collection = 'users'
 
-function User(name, secret) {
-  this.name = name
+function User(id, secret) {
+  this.id = id
   this.secret = secret
 }
 
-User.find = function (name, callback) {
+User.find = function (id, callback) {
   db.get().collection(collection).findOne({
-    name: name
+    _id: id
   }, function (err, doc) {
     if (doc) {
-      const usr = new User(doc.name)
+      const usr = new User(doc._id)
       usr.hash = doc.hash
       callback(err, usr)
     } else {
@@ -28,7 +28,7 @@ User.prototype.add = function (callback) {
   const usr = this
   const col = db.get().collection(collection)
   col.count({
-    name: usr.name
+    _id: usr.id
   }, function (err, cnt) {
     if (err) {
       callback(err)
@@ -40,7 +40,7 @@ User.prototype.add = function (callback) {
           callback(err)
         usr.hash = hash
         col.insertOne({
-          name: usr.name,
+          _id: usr.id,
           hash: usr.hash
         }, function (err, res) {
           if (err)
