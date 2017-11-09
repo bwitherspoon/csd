@@ -14,6 +14,7 @@ router.get('/', function (req, res) {
   var options = ['Resin', 'Fiber', 'Thermoset Scrap', 'Thermoplastic Scrap']
   res.render('search', {
     view: 'search',
+    authenticated: Boolean(req.session) && Boolean(req.session.user),
     options: options
   })
 })
@@ -26,6 +27,8 @@ router.get('/*', function (req, res) {
     options = lookup[query]
   }
   res.render('search', {
+    view: 'search',
+    authenticated: Boolean(req.session) && Boolean(req.session.user),
     options: options
   })
 })

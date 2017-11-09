@@ -28,12 +28,14 @@ app.use('/user', user)
 // Application-level middleware
 app.get('/', function (req, res) {
   res.render('index', {
-    view: 'home'
+    view: 'home',
+    authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
 })
 app.get('/about', function (req, res) {
   res.render('about', {
-    view: 'about'
+    view: 'about',
+    authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
 })
 app.get('/learn', function (req, res) {
@@ -41,17 +43,20 @@ app.get('/learn', function (req, res) {
 })
 app.get('/learn/modules', function (req, res) {
   res.render('modules', {
-    view: 'learn'
+    view: 'learn',
+    authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
 })
 app.get('/learn/overview', function (req, res) {
   res.render('overview', {
-    view: 'learn'
+    view: 'learn',
+    authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
 })
 app.get('/contact', function (req, res) {
   res.render('contact', {
-    view: 'contact'
+    view: 'contact',
+    authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
 })
 app.get('/login', function (req, res) {
