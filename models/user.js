@@ -1,3 +1,4 @@
+const assert = require('assert')
 const bcrypt = require('bcrypt')
 
 const db = require('../database')
@@ -23,16 +24,32 @@ User.find = function (name, callback) {
   })
 }
 
-User.prototype.save = function (callback) {
+User.prototype.add = function (callback) {
   const usr = this
-  bcrypt.hash(this.secret, 12, function (err, hash) {
-    if (err)
+  const col = db.get().collection(collection)
+  col.count({
+    name: usr.name
+  }, function (err, cnt) {
+    if (err) {
       callback(err)
-    usr.hash = hash
-    db.get().collection(collection).insertOne({
-      name: usr.name,
-      hash: usr.hash
-    }, callback)
+    } else if (cnt) {
+      callback(null, false)
+    } else {
+      bcrypt.hash(usr.secret, 12, function (err, hash) {
+        if (err)
+          callback(err)
+        usr.hash = hash
+        col.insertOne({
+          name: usr.name,
+          hash: usr.hash
+        }, function (err, res) {
+          if (err)
+            callback(err)
+          assert.equal(1, res.insertedCount)
+          callback(null, true)
+        })
+      })
+    }
   })
 }
 

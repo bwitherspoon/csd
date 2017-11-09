@@ -6,10 +6,12 @@ module.exports.register = function (req, res) {
     return
   }
   const usr = new User(req.body.email, req.body.password)
-  usr.save(function (err) {
+  usr.add(function (err, ok) {
     if (err) {
       console.error(err.stack)
       res.status(500).end()
+    } else if (!ok) {
+      res.status(400).end()
     } else {
       res.status(200).end()
     }
