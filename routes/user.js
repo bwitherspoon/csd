@@ -23,4 +23,6 @@ router.post('/login', parser, UserController.login)
 
 router.all('/logout', UserController.logout)
 
+router.get('/folder', UserController.authenticate, UserController.folder)
+
 module.exports = router
