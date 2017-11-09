@@ -52,6 +52,19 @@ module.exports.login = function (req, res) {
   })
 }
 
+module.exports.logout = function (req, res) {
+  if (req.session) {
+    req.session.destroy(function (err) {
+      if (err) {
+        console.error(err.stack)
+        res.status(500).end()
+      } else {
+        res.redirect('/')
+      }
+    })
+  }
+}
+
 module.exports.authenticate = function (req, res, next) {
   if (req.session && req.session.name) {
     return next()

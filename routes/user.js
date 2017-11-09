@@ -21,4 +21,6 @@ router.get('/login', function (req, res) {
 })
 router.post('/login', parser, UserController.login)
 
+router.all('/logout', UserController.logout)
+
 module.exports = router
