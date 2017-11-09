@@ -73,9 +73,9 @@ module.exports.folder = function (req, res) {
 }
 
 module.exports.authenticate = function (req, res, next) {
-  if (req.session && req.session.name) {
-    return next()
-  } else {
+  if (!req.session || !req.session.name) {
     res.redirect('/user/login')
+  } else {
+    return next()
   }
 }
