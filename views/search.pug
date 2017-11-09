@@ -16,7 +16,7 @@ block content
         for opt in options
           option(value=opt.toLowerCase().replace(' ', '-'))= opt
       if options.length == 0
-        a(class='btn btn-danger ml-2' href='/database' role='button') Reset
+        a(class='btn btn-danger ml-2' href='/search' role='button') Reset
       else
         button(type='button' class='btn btn-success ml-2' onclick='search()') Search
     else
