@@ -44,6 +44,9 @@ app.get('/learn/overview', function (req, res) {
 app.get('/contact', function (req, res) {
   res.render('contact')
 })
+app.get('/login', function (req, res) {
+  res.redirect('/user/login')
+})
 
 // Error handling
 app.use(function (err, req, res, next) {
