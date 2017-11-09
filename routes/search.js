@@ -13,6 +13,7 @@ const lookup = {
 router.get('/', function (req, res) {
   var options = ['Resin', 'Fiber', 'Thermoset Scrap', 'Thermoplastic Scrap']
   res.render('search', {
+    view: 'search',
     options: options
   })
 })

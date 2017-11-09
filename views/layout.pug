@@ -27,15 +27,15 @@ html(lang='en')
           //- Navigation
           ul(class='nav nav-pills p-2')
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-home' href='/') Home
+              a(class='nav-link' id='nav-link-home' href='/' class={active: view === 'home'}) Home
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-about' href='/about') About
+              a(class='nav-link' id='nav-link-about' href='/about' class={active: view === 'about'}) About
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-learn' href='/learn') Learn
+              a(class='nav-link' id='nav-link-learn' href='/learn' class={active: view === 'learn'}) Learn
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-search' href='/search') Search
+              a(class='nav-link' id='nav-link-search' href='/search' class={active: view === 'search'}) Search
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-contact' href='/contact') Contact
+              a(class='nav-link' id='nav-link-contact' href='/contact' class={active: view === 'contact'}) Contact
           //- Buttons
           div(class='btn-group ml-auto p-2' role='group')
             button(type='button' class='btn btn-primary' onclick='location.pathname=\'/login\'')

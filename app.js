@@ -27,22 +27,32 @@ app.use('/user', user)
 
 // Application-level middleware
 app.get('/', function (req, res) {
-  res.render('index')
+  res.render('index', {
+    view: 'home'
+  })
 })
 app.get('/about', function (req, res) {
-  res.render('about')
+  res.render('about', {
+    view: 'about'
+  })
 })
 app.get('/learn', function (req, res) {
   res.redirect('/learn/modules')
 })
 app.get('/learn/modules', function (req, res) {
-  res.render('modules')
+  res.render('modules', {
+    view: 'learn'
+  })
 })
 app.get('/learn/overview', function (req, res) {
-  res.render('overview')
+  res.render('overview', {
+    view: 'learn'
+  })
 })
 app.get('/contact', function (req, res) {
-  res.render('contact')
+  res.render('contact', {
+    view: 'contact'
+  })
 })
 app.get('/login', function (req, res) {
   res.redirect('/user/login')
