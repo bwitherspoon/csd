@@ -44,7 +44,7 @@ module.exports.login = function (req, res) {
           })
         } else {
           console.log("User " + user.name + " passed authentication")
-          req.session.name = user.name
+          req.session.user = user.name
           res.redirect('/')
         }
       })
@@ -67,13 +67,13 @@ module.exports.logout = function (req, res) {
 
 module.exports.folder = function (req, res) {
   res.render('folder', {
-    user: req.session.name,
+    user: req.session.user,
     authenticated: true
   })
 }
 
 module.exports.authenticate = function (req, res, next) {
-  if (!req.session || !req.session.name) {
+  if (!req.session || !req.session.user) {
     res.redirect('/user/login')
   } else {
     return next()
