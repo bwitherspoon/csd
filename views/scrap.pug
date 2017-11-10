@@ -1,0 +1,70 @@
+extends layout
+
+block scripts
+  script.
+    function toggle(name) {
+      const checkbox = document.getElementById('checkbox-' + name)
+      const select = document.getElementById('select-' + name)
+      select.disabled = !checkbox.checked
+    }
+
+block content
+  .row
+    form(action='/scrap' method='post')
+      if reinforcements
+        .form-group
+          label(for='select-reinforcement') Reinforcement
+          .input-group
+            span(class='input-group-addon')
+              input(type='checkbox' id='checkbox-reinforcement' onclick='toggle(\'reinforcement\')')
+            select(class='form-control' id='select-reinforcement' name='reinforcement' disabled)
+              for name, value in reinforcements
+                option(value=value)= name
+      if resins
+        .form-group
+          label(for='select-resin') Resin
+          .input-group
+            span(class='input-group-addon')
+              input(type='checkbox' id='checkbox-resin' onclick='toggle(\'resin\')')
+            select(class='form-control' id='select-resin' name='resin' disabled)
+              for name, value in resins
+                option(value=value)= name
+      if forms
+        .form-group
+          label(for='select-form') Form
+          .input-group
+            span(class='input-group-addon')
+              input(type='checkbox' id='checkbox-form' onclick='toggle(\'form\')')
+            select(class='form-control' id='select-form' name='form' disabled)
+              for name, value in forms
+                option(value=value)= name
+      if methods
+        .form-group
+          label(for='select-method') Fabrication
+          select(class='form-control' id='select-method' name='method')
+            option
+            for name, value in methods
+              option(value=value)= name
+      if origins
+        .form-group
+          label(for='select-origin') Origin
+          select(class='form-control' id='select-origin' name='origin')
+            option
+            for name, value in origins
+              option(value=value)= name
+      if locations
+        .form-group
+          label(for='select-location') Location
+          select(class='form-control' id='select-location' name='location')
+            option
+            for name, value in locations
+              option(value=value)= name
+      .form-group
+        label(for='input-quantity') Quantity
+        .input-group
+          input(class='form-control' id='input-quantity' type='number' name='quantity')
+          span(class='input-group-addon') kg
+      .form-group
+        label(for='textarea-notes') Notes
+        textarea(class='form-control' id='textarea-notes' rows='3' name='notes')
+      button(class='btn btn-primary' type='submit') Submit
