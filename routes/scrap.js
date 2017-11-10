@@ -13,15 +13,21 @@ router.get('/', authenticate, function (req, res) {
   res.render('scrap', {
     view: 'scrap',
     authenticated: true,
+    resins: {
+      polyster: 'Polyester',
+      epoxy: 'Epoxy',
+      vinylester: 'Vinyl Ester',
+      phenolic: 'Phenolic',
+      polyurethane: 'Polyurethane',
+      abs: "ABS",
+      polyethylene: 'Polyethylene',
+      polystyrene: 'Polystyrene',
+      polycarbonate: 'Polycarbonate'
+    },
     reinforcements: {
       glassfiber: 'Glass Fiber',
       carbonfiber: 'Carbon Fiber',
       kevlarfiber: 'Kevlar Fiber'
-    },
-    resins: {
-      nylon6: 'Nylon-6',
-      epoxy: 'Epoxy',
-      vinylester: 'Vinyl Ester'
     },
     forms: {
       bulk: 'Bulk',

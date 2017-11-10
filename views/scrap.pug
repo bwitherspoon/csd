@@ -11,15 +11,6 @@ block scripts
 block content
   .row
     form(action='/scrap' method='post')
-      if reinforcements
-        .form-group
-          label(for='select-reinforcement') Reinforcement
-          .input-group
-            span(class='input-group-addon')
-              input(type='checkbox' id='checkbox-reinforcement' onclick='toggle(\'reinforcement\')')
-            select(class='form-control' id='select-reinforcement' name='reinforcement' disabled)
-              for name, value in reinforcements
-                option(value=value)= name
       if resins
         .form-group
           label(for='select-resin') Resin
@@ -28,6 +19,15 @@ block content
               input(type='checkbox' id='checkbox-resin' onclick='toggle(\'resin\')')
             select(class='form-control' id='select-resin' name='resin' disabled)
               for name, value in resins
+                option(value=value)= name
+      if reinforcements
+        .form-group
+          label(for='select-reinforcement') Reinforcement
+          .input-group
+            span(class='input-group-addon')
+              input(type='checkbox' id='checkbox-reinforcement' onclick='toggle(\'reinforcement\')')
+            select(class='form-control' id='select-reinforcement' name='reinforcement' disabled)
+              for name, value in reinforcements
                 option(value=value)= name
       if forms
         .form-group
