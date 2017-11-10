@@ -42,7 +42,7 @@ router.get('/', authenticate, function (req, res) {
 router.post('/', authenticate, parser, function (req, res) {
   const scrap = new Scrap(req.body)
   if (Object.keys(scrap).length == 0)
-    return res.status(400).send('Failure')
+    return res.status(400).send('Refusing to accept an empty document')
   scrap.add(function (err, cnt) {
     if (err) {
       console.error(err.stack)
@@ -50,7 +50,7 @@ router.post('/', authenticate, parser, function (req, res) {
     } else if (!cnt) {
       res.status(400).send('Failure')
     } else {
-      res.status(200).send('Success')
+      res.redirect('/scrap')
     }
   })
 })
