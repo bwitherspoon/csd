@@ -1,5 +1,6 @@
 // Composite scrap database application
 const assert = require('assert')
+const crypto = require('crypto')
 const path = require('path')
 const express = require('express')
 const session = require('express-session')
@@ -17,7 +18,7 @@ app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
-  secret: 'crtepcsd',
+  secret: crypto.randomBytes(16).toString(),
   resave: false,
   saveUninitialized: false
 }))
