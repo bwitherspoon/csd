@@ -47,7 +47,9 @@ module.exports.login = function (req, res) {
         } else {
           console.log("User " + usr.id + " passed authentication")
           req.session.user = usr
-          res.redirect('/')
+          const referer = req.session.redirect || '/'
+          delete req.session.redirect
+          res.redirect(referer)
         }
       })
     }
@@ -75,9 +77,13 @@ module.exports.folder = function (req, res) {
 }
 
 module.exports.authenticate = function (req, res, next) {
-  if (!req.session || !req.session.user) {
+  if (!req.session) {
+    res.redirect('/user/login')
+  } else if (!req.session.user) {
+    req.session.redirect = req.headers['Referer'] || req.originalUrl
+    console.log(req.session.redirect)
     res.redirect('/user/login')
   } else {
-    return next()
+    next()
   }
 }
