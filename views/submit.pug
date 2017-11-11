@@ -11,7 +11,10 @@ block scripts
 block content
   if error
     .row
-      div(class='alert alert-danger' role='alert')= error
+      div(class='alert alert-danger w-100' role='alert')= error
+  else if success
+    .row
+      div(class='alert alert-success w-100' rold='alert') Success! Document inserted
   .row
     form(action='/scrap' method='post')
       if resins

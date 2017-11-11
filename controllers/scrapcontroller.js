@@ -78,6 +78,7 @@ module.exports.submit = {
           args.error = 'Failure! Unable to insert document'
           res.status(400).render('submit', args)
         } else {
+          args.success = true
           res.render('submit', args)
         }
       })
