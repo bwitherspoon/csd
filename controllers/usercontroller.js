@@ -23,30 +23,30 @@ module.exports.login = function (req, res) {
     res.status(400).end()
     return
   }
-  User.find(req.body.email, function (error, user) {
-    if (error) {
-      console.error(error.stack)
+  User.find(req.body.email, function (err, usr) {
+    if (err) {
+      console.error(err.stack)
       res.status(500).end()
-    } else if (!user) {
+    } else if (!usr) {
       console.log("User " + req.body.email + " does not exist")
       res.status(400)
       res.render('login', {
-        failed: true
+        error: 'Email or password incorrect'
       })
     } else {
-      user.verify(req.body.password, function (err, ok) {
+      usr.verify(req.body.password, function (err, ok) {
         if (err) {
           console.error(err.stack)
           res.status(500).end()
         } else if (!ok) {
-          console.log("User " + user.id + " failed authentication")
+          console.log("User " + usr.id + " failed authentication")
           res.status(400)
           res.render('login', {
-            failed: true
+            error: 'Email or password incorrect'
           })
         } else {
-          console.log("User " + user.id + " passed authentication")
-          req.session.user = user
+          console.log("User " + usr.id + " passed authentication")
+          req.session.user = usr
           res.redirect('/')
         }
       })

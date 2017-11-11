@@ -15,9 +15,7 @@ router.get('/register', UserController.authenticate, function (req, res) {
 router.post('/register', UserController.authenticate, parser, UserController.register)
 
 router.get('/login', function (req, res) {
-  res.render('login', {
-    failed: false
-  })
+  res.render('login')
 })
 router.post('/login', parser, UserController.login)
 

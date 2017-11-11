@@ -18,13 +18,16 @@ html(lang='en')
     div(class='container')
       div(class='row justify-content-center')
         img(class='m-2' src='/images/logo.svg' alt='Composite Recycling')
+      if error
+        div(class='row justify-content-center')
+          div(class='alert alert-danger' role='alert')= error
       div(class='row justify-content-center')
         form(class='form-login w-25' action='/user/login' method='post')
           div(class='form-group')
             label(for='email') E-mail
-            input(type='email' name='email' class=failed ? 'form-control is-invalid' : 'form-control' placeholder='E-mail address' required autofocus)
+            input(type='email' name='email' class=error ? 'form-control is-invalid' : 'form-control' placeholder='E-mail address' required autofocus)
           div(class='form-group')
             label(for='password') Password
-            input(type='password' name='password' class=failed ? 'form-control is-invalid' : 'form-control' placeholder='Password' required)
+            input(type='password' name='password' class=error ? 'form-control is-invalid' : 'form-control' placeholder='Password' required)
           div(class='form-group')
             button(type='submit' class='btn btn-lg btn-primary btn-block') Sign in
