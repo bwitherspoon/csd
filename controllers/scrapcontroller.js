@@ -5,7 +5,7 @@ const options = {
   authenticated: true,
   resins: {
     epoxy: 'Epoxy',
-    ve: 'Vinyl Ester',
+    ve: 'Vinyl ester',
     pe: 'Polyester',
     pf: 'Phenolic (PF)',
     pu: 'Polyurethane (PU)',
@@ -18,9 +18,11 @@ const options = {
     pvc: 'Polyvinyl chloride (PVC)'
   },
   reinforcements: {
-    glass: 'Glass Fiber',
-    carbon: 'Carbon Fiber',
-    kevlar: 'Kevlar Fiber'
+    glass: 'Glass fiber',
+    carbon: 'Carbon fiber',
+    kevlar: 'Kevlar fiber',
+    nylon: 'Nylon fiber',
+    polyester: 'Polyester fiber'
   },
   forms: {
     ground: 'Ground',
@@ -28,14 +30,22 @@ const options = {
     smc: 'Sheet molding compound (SMC)',
     bmc: 'Bulk modling compound (BMC)',
     bulk: 'Bulk',
-    choptape: 'Chopped Tape',
-    trimoff: 'Trim Offs'
+    choptape: 'Chopped tape',
+    trimoff: 'Trim offs',
+    mat: 'Mat',
+    prepreg: 'Prepreg'
   },
   methods: {
+    vbm: 'Vacuum bag molding',
+    vip: 'Vacuum infusion processing',
+    rtm: 'Resin transfer molding',
     pultrusion: 'Pultrusion',
     extrusion: 'Extrusion',
     injection: 'Injection molding',
-    compression: 'Compression molding'
+    compression: 'Compression molding',
+    layup: 'Hand lay-up',
+    sprayup: 'Spray-up',
+    winding: 'Filament winding'
   },
   origins: {
     hardin: 'Hardin Composites'
