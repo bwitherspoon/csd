@@ -1,42 +1,63 @@
 extends layout
 
 block scripts
-  script(src='/js/search.js')
+  script(src='/js/scrap.js')
 
 block content
-  div(class='row justify-content-center')
-    if options !== null
-      select(class='form-control' id='select-search' style='width: 20rem')
-        if options.length == 0
-          option(hidden disabled selected value) No Results
-        else
-          option(hidden disabled selected value) Select an Option
-        for opt in options
-          option(value=opt.toLowerCase().replace(' ', '-'))= opt
-      if options.length == 0
-        a(class='btn btn-danger ml-2' href='/search' role='button') Reset
-      else
-        button(type='button' class='btn btn-success ml-2' onclick='search()') Search
-    else
-      div(class='card')
-        div(class='card-header')
-        div(class='card-body clearfix')
-          h4(class='card-title') PA-6 / 50 wt. % GF Chopped Unidirectional Tape
-          img(class='float-right' alt='Image of material' src='http://cdspooner.com/csd/images/pa6_gf_chopped_tape.png')
-          p
-            b Material Notes:
-            |  Original form was continuous, this scrap comes from trim-offs. Various shapes and sizes.
-          p
-            b Origin:
-            |  Hardin Composites
-          p
-            b Manufacturing Method:
-            a(href='javascript:void(0)')  Pultrusion
-          p
-            b Current Location:
-            |  University of Alabama at Birmingham (UAB)
-          p
-            b Amount:
-            |  500 lbs
-          a(class='btn btn-primary mr-2' href='javascript:void(0)') Save
-          a(class='btn btn-primary' href='javascript:void(0)') Query
+  if error
+    .row
+      div(class='alert alert-danger w-100' role='alert')= error
+  if results
+      for result, index in results
+        div(class='row')
+          div(class='card w-50 m-2')
+            div(class='card-header') #{index+1}: #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
+            div(class='card-body clearfix')
+              h4(class='card-title') #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
+              p
+                b Origin:
+                |  #{result.origin ? result.origin : 'unknown'}
+              p
+                b Manufacturing Method:
+                |  #{result.method ? result.method : 'unknown'}
+              p
+                b Location:
+                |  #{result.location ? result.location : 'unknown'}
+              p
+                b Quantity:
+                |  #{result.quantity ? result.quantity : '?'} kg
+              p
+                b Notes:
+                |  #{result.notes ? result.notes : ''}
+              a(class='btn btn-primary mr-2' href='javascript:void(0)') Save
+  else
+    .row
+      form(action='/scrap/search' method='post')
+        if resins
+          .form-group
+            label(for='select-resin') Resin
+            .input-group
+              span(class='input-group-addon')
+                input(type='checkbox' id='checkbox-resin' onclick='toggle(\'resin\')')
+              select(class='form-control' id='select-resin' name='resin' disabled)
+                for name, value in resins
+                  option(value=value)= name
+        if reinforcements
+          .form-group
+            label(for='select-reinforcement') Reinforcement
+            .input-group
+              span(class='input-group-addon')
+                input(type='checkbox' id='checkbox-reinforcement' onclick='toggle(\'reinforcement\')')
+              select(class='form-control' id='select-reinforcement' name='reinforcement' disabled)
+                for name, value in reinforcements
+                  option(value=value)= name
+        if forms
+          .form-group
+            label(for='select-form') Form
+            .input-group
+              span(class='input-group-addon')
+                input(type='checkbox' id='checkbox-form' onclick='toggle(\'form\')')
+              select(class='form-control' id='select-form' name='form' disabled)
+                for name, value in forms
+                  option(value=value)= name
+        button(class='btn btn-primary' type='submit') Search

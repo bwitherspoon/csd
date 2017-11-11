@@ -6,7 +6,6 @@ const express = require('express')
 const session = require('express-session')
 
 const database = require('./database')
-const search = require('./routes/search')
 const user = require('./routes/user')
 const scrap = require('./routes/scrap')
 
@@ -24,7 +23,6 @@ app.use(session({
 }))
 
 // Router-level middleware
-app.use('/search', search)
 app.use('/user', user)
 app.use('/scrap', scrap)
 
@@ -64,6 +62,9 @@ app.get('/contact', function (req, res) {
 })
 app.get('/login', function (req, res) {
   res.redirect('/user/login')
+})
+app.get('/search', function (req, res) {
+  res.redirect('/scrap/search')
 })
 
 // Error handling

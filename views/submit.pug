@@ -1,12 +1,7 @@
 extends layout
 
 block scripts
-  script.
-    function toggle(name) {
-      const checkbox = document.getElementById('checkbox-' + name)
-      const select = document.getElementById('select-' + name)
-      select.disabled = !checkbox.checked
-    }
+  script(src='/js/scrap.js')
 
 block content
   if error
@@ -16,7 +11,7 @@ block content
     .row
       div(class='alert alert-success w-100' rold='alert') Success! Document inserted
   .row
-    form(action='/scrap' method='post')
+    form(action='/scrap/submit' method='post')
       if resins
         .form-group
           label(for='select-resin') Resin

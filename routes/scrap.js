@@ -9,7 +9,9 @@ const parser = bodyParser.urlencoded({
   extended: false
 })
 
-router.get('/', authenticate, ScrapController.submit.get)
-router.post('/', authenticate, parser, ScrapController.submit.post)
+router.get('/search', ScrapController.search.get)
+router.post('/search', parser, ScrapController.search.post)
+router.get('/submit', authenticate, ScrapController.submit.get)
+router.post('/submit', authenticate, parser, ScrapController.submit.post)
 
 module.exports = router
