@@ -81,7 +81,6 @@ module.exports.authenticate = function (req, res, next) {
     res.redirect('/user/login')
   } else if (!req.session.user) {
     req.session.redirect = req.headers['Referer'] || req.originalUrl
-    console.log(req.session.redirect)
     res.redirect('/user/login')
   } else {
     next()
