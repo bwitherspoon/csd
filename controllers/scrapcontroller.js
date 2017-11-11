@@ -1,7 +1,7 @@
 const Scrap = require('../models/scrap')
 
 const options = {
-  view: 'scrap',
+  view: 'submit',
   authenticated: true,
   resins: {
     epoxy: 'Epoxy',
@@ -57,7 +57,7 @@ const options = {
 
 module.exports.submit = {
   get: function (req, res) {
-    res.render('scrap', options)
+    res.render('submit', options)
   },
   post: function (req, res) {
     const scrap = new Scrap(req.body)
