@@ -9,6 +9,9 @@ block scripts
     }
 
 block content
+  if error
+    .row
+      div(class='alert alert-danger' role='alert')= error
   .row
     form(action='/scrap' method='post')
       if resins

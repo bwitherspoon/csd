@@ -1,8 +1,6 @@
 const Scrap = require('../models/scrap')
 
 const options = {
-  view: 'submit',
-  authenticated: true,
   resins: {
     epoxy: 'Epoxy',
     ve: 'Vinyl ester',
@@ -57,21 +55,32 @@ const options = {
 
 module.exports.submit = {
   get: function (req, res) {
-    res.render('submit', options)
+    const args = Object.assign({}, options)
+    args.view = 'submit'
+    args.authenticated = true
+    res.render('submit', args)
   },
   post: function (req, res) {
     const scrap = new Scrap(req.body)
-    if (Object.keys(scrap).length == 0)
-      return res.status(400).send('Refusing to accept an empty document')
-    scrap.add(function (err, cnt) {
-      if (err) {
-        console.error(err.stack)
-        res.status(500).end()
-      } else if (!cnt) {
-        res.status(400).send('Failure')
-      } else {
-        res.redirect('/scrap')
-      }
-    })
+    const args = Object.assign({
+      view: 'submit',
+      authenticated: true
+    }, options)
+    if (Object.keys(scrap).length == 0) {
+      args.error = 'Failure! Refusing an empty document'
+      res.status(400).render('submit', args)
+    } else {
+      scrap.add(function (err, cnt) {
+        if (err) {
+          console.error(err.stack)
+          res.status(500).end()
+        } else if (!cnt) {
+          args.error = 'Failure! Unable to insert document'
+          res.status(400).render('submit', args)
+        } else {
+          res.render('submit', args)
+        }
+      })
+    }
   }
 }
