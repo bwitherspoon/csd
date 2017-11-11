@@ -14,15 +14,18 @@ router.get('/', authenticate, function (req, res) {
     view: 'scrap',
     authenticated: true,
     resins: {
-      polyster: 'Polyester',
       epoxy: 'Epoxy',
       vinylester: 'Vinyl Ester',
-      phenolic: 'Phenolic',
-      polyurethane: 'Polyurethane',
-      abs: "ABS",
-      polyethylene: 'Polyethylene',
-      polystyrene: 'Polystyrene',
-      polycarbonate: 'Polycarbonate'
+      polyster: 'Polyester',
+      pf: 'Phenolic (PF)',
+      pu: 'Polyurethane (PU)',
+      abs: "Acrylonitrile butadiene styrene (ABS)",
+      ldpe: 'Polyethylene (LDPE)',
+      hdpe: 'Polyethylene (HDPE)',
+      ps: 'Polystyrene (PS)',
+      pc: 'Polycarbonate (PC)',
+      pp: 'Polypropylene (PP)',
+      pvc: 'Polyvinyl chloride (PVC)'
     },
     reinforcements: {
       glassfiber: 'Glass Fiber',
@@ -30,12 +33,19 @@ router.get('/', authenticate, function (req, res) {
       kevlarfiber: 'Kevlar Fiber'
     },
     forms: {
+      ground: 'Ground',
+      shred: 'Shredded',
+      smc: 'Sheet molding compound (SMC)',
+      bmc: 'Bulk modling compound (BMC)',
       bulk: 'Bulk',
       choptape: 'Chopped Tape',
       trimoff: 'Trim Offs'
     },
     methods: {
-      pultrusion: 'Pultrusion'
+      pultrusion: 'Pultrusion',
+      extrusion: 'Extrusion',
+      injection: 'Injection molding',
+      compression: 'Compression molding'
     },
     origins: {
       hardin: 'Hardin Composites'
