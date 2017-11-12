@@ -8,21 +8,21 @@ block content
     .row
       div(class='alert alert-danger w-100' role='alert')= error
   if results
-      for result, index in results
+      for result in results
         div(class='row')
           div(class='card w-50 m-2')
-            div(class='card-header') #{index+1}: #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
+            div(class='card-header') #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
             div(class='card-body clearfix')
-              h4(class='card-title') #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
+              h4(class='card-title') #{result.resin ? resins[result.resin] : ''}#{result.reinforcement ? ' - ' + reinforcements[result.reinforcement] : ''}#{result.form ? ' - ' + forms[result.form] : ''}
               p
                 b Origin:
-                |  #{result.origin ? result.origin : 'unknown'}
+                |  #{result.origin ? origins[result.origin] : 'Unknown'}
               p
                 b Manufacturing Method:
-                |  #{result.method ? result.method : 'unknown'}
+                |  #{result.method ? methods[result.method] : 'Unknown'}
               p
                 b Location:
-                |  #{result.location ? result.location : 'unknown'}
+                |  #{result.location ? locations[result.location] : 'Unknown'}
               p
                 b Quantity:
                 |  #{result.quantity ? result.quantity : '?'} kg
