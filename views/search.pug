@@ -15,20 +15,26 @@ block content
             div(class='card-body clearfix')
               h4(class='card-title') #{result.resin ? resins[result.resin] : ''}#{result.reinforcement ? ' - ' + reinforcements[result.reinforcement] : ''}#{result.form ? ' - ' + forms[result.form] : ''}
               p
-                b Origin:
+                b Shortcut Name:
+                |  #{result.resin ? result.resin : ''}#{result.reinforcement ? '-' + result.reinforcement : ''}#{result.form ? '-' + result.form : ''}
+              p
+                b Detailed Name:
+                |  #{result.resin ? resins[result.resin] : ''}#{result.reinforcement ? ' - ' + reinforcements[result.reinforcement] : ''}#{result.form ? ' - ' + forms[result.form] : ''}
+              p
+                b Origin Company:
                 |  #{result.origin ? origins[result.origin] : 'Unknown'}
               p
                 b Manufacturing Method:
                 |  #{result.method ? methods[result.method] : 'Unknown'}
               p
-                b Location:
+                b Current Location:
                 |  #{result.location ? locations[result.location] : 'Unknown'}
               p
                 b Quantity:
                 |  #{result.quantity ? result.quantity : '?'} kg
               p
-                b Notes:
-                |  #{result.notes ? result.notes : ''}
+                b Research Notes:
+                p #{result.notes ? result.notes : ''}
               a(class='btn btn-primary mr-2' href='javascript:void(0)') Save
   else
     .row
