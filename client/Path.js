@@ -11,7 +11,7 @@ const resin = {
     pp: 'Polypropylene (PP)',
     pps: 'Polyphenylene Sulfide (PPS)',
     ps: 'Polystyrene (PS)',
-    ptfe: "olytetrafluoroethylene (PTFE; Teflon)",
+    ptfe: "Polytetrafluoroethylene (PTFE; Teflon)",
     pvc: 'Polyvinyl chloride (PVC)',
   },
   thermoset: {
