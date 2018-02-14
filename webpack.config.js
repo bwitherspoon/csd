@@ -10,14 +10,26 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'client'),
         use: {
           loader: 'babel-loader',
           options: {
+            babelrc: false,
             presets: ['env', 'react']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, 'client'),
+          path.resolve(__dirname, 'node_modules', 'bootstrap', 'dist', 'css')
+        ],
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
+      },
     ]
   }
 }
