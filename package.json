@@ -2,12 +2,12 @@
   "name": "csd",
   "version": "0.0.0",
   "description": "Composite Scrap Database",
-  "main": "server.js",
+  "main": "server/server.js",
   "engines": {
     "node": "6.11.4"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/server.js",
     "nodemon": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
