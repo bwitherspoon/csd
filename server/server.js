@@ -66,6 +66,9 @@ app.get('/login', function (req, res) {
 app.get('/search', function (req, res) {
   res.redirect('/scrap/search')
 })
+app.get('/admin', (req, res) => {
+  res.render('admin') }
+)
 
 // Error handling
 app.use(function (err, req, res, next) {

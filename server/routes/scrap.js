@@ -14,6 +14,4 @@ router.post('/search', parser, ScrapController.search.post)
 router.get('/submit', authenticate, ScrapController.submit.get)
 router.post('/submit', authenticate, parser, ScrapController.submit.post)
 
-router.get('/admin', authenticate, (req, res) => { res.render('admin') })
-
 module.exports = router
