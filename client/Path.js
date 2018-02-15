@@ -138,12 +138,12 @@ const fibers = [
   {
     label: 'Graphite / Carbon',
     short: 'CF',
-    value: ',reinforcement,fiber,cf,',
+    value: ',reinforcement,fiber,graphite,',
   },
   {
     label: 'Glass / Fiberglass',
     short: 'GF',
-    value: ',reinforcement,fiber,gf,',
+    value: ',reinforcement,fiber,glass,',
   },
   {
     label: 'Aramid',
@@ -164,8 +164,29 @@ const fibers = [
 ]
 const graphites = [
   {
-
-  }
+    label: 'Low modulus',
+    value: ',reinforcement,fiber,graphite,low',
+  },
+  {
+    label: 'Standard modulus',
+    value: ',reinforcement,fiber,graphite,standard',
+  },
+  {
+    label: 'Intermediate modulus',
+    value: ',reinforcement,fiber,graphite,intermediatemodulus',
+  },
+  {
+    label: 'High modulus',
+    value: ',reinforcement,fiber,graphite,highmodulus',
+  },
+  {
+    label: 'Ultra modulus',
+    value: ',reinforcement,fiber,graphite,ultrahighmodulus',
+  },
+  {
+    label: 'Other',
+    value: ',reinforcement,fiber,graphite,other',
+  },
 ]
 const particulates = [
   {
