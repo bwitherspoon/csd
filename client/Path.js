@@ -1,70 +1,249 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, ListGroup, ListGroupItem } from 'reactstrap'
 
-const resin = {
-  thermoplastic: {
-    abs: 'Acrylonitrile butadiene styrene (ABS)',
-    polyamide: 'Polyamide',
-    pe: 'Polyethylene (PE)',
-    pc: 'Polycarbonate (PC)',
-    peek: 'Polyether ether ketone (PEEK)',
-    pp: 'Polypropylene (PP)',
-    pps: 'Polyphenylene Sulfide (PPS)',
-    ps: 'Polystyrene (PS)',
-    ptfe: "Polytetrafluoroethylene (PTFE; Teflon)",
-    pvc: 'Polyvinyl chloride (PVC)',
+// TODO Move these objects into database
+const thermoplastics = [
+  {
+    label: 'Acrylonitrile butadiene styrene',
+    short: 'ABS',
+    value: ',resin,thermoplastic,abs',
   },
-  thermoset: {
-    epoxy: 'Epoxy',
-    phenolic: 'Phenolic (Bakelite)',
-    polyester: 'Polyester',
-    polyimide: "Polyimide",
-    pur: 'Polyurethane (PUR)',
-    silicone: 'Silicone',
-    ve: 'Vinyl ester (VE)',
-    vulcanizedrubber: "Vulcanized rubber",
+  {
+    label: 'Polyamide',
+    value: ',resin,thermoplastic,polyamide',
   },
-  polyamide: {
-    pa: 'Nylon (PA)',
-    pa12: 'Nylon 12 (PA12)',
-    pa6: 'Nylon 6 (PA6)',
-    pa66: 'Nylon 6,6 (PA6,6)',
+  {
+    label: 'Polyethylene',
+    short: 'PE',
+    value: ',resin,thermoplastic,pe',
   },
-  polyethylene: {
-    hdpe: 'High density polyethylene (HDPE)',
-    ldpe: 'Low density polyethylene (LDPE)',
-    mdpe: 'Medium density polyethylene (MDPE)',
-    uhmwpe: 'Ultra high molecular weight polyethylene (UHMWPE)',
+  {
+    label: 'Polycarbonate',
+    short: 'PC',
+    value: ',resin,thermoplastic,pc',
   },
+  {
+    label: 'Polyether ether ketone',
+    short: 'PEEK',
+    value: ',resin,thermoplastic,peek',
+  },
+  {
+    label: 'Polypropylene',
+    short: 'PP',
+    value: ',resin,thermoplastic,pp',
+  },
+  {
+    label: 'Polyphenylene Sulfid',
+    short: 'PPS',
+    value: ',resin,thermoplastic,pps',
+  },
+  {
+    label: 'Polystyrene',
+    short: 'PS',
+    value: ',resin,thermoplastic,ps',
+  },
+  {
+    label: 'Polytetrafluoroethylene / Teflon',
+    short: 'PTFE',
+    value: ',resin,thermoplastic,ptfe',
+  },
+  {
+    label: 'Polyvinyl chloride',
+    short: 'PVC',
+    value: ',resin,thermoplastic,pvc',
+  },
+]
+const thermosets = [
+  {
+    label: 'Epoxy',
+    value: ',resin,thermoplastic,epoxy',
+  },
+  {
+    label: 'Phenolic / Bakelite',
+    value: ',resin,thermoplastic,phenolic',
+  },
+  {
+    label: 'Polyester',
+    value: ',resin,thermoplastic,polyester',
+  },
+  {
+    label: 'Polyimide',
+    value: ',resin,thermoplastic,polyimide',
+  },
+  {
+    label: 'Polyurethane',
+    short: 'PUR',
+    value: ',resin,thermoplastic,pur',
+  },
+  {
+    label: 'Silicone',
+    value: ',resin,thermoplastic,silicone',
+  },
+  {
+    label: 'Vinyl ester',
+    short: 'VE',
+    value: ',resin,thermoplastic,ve',
+  },
+  {
+    label: 'Vulcanized rubber',
+    value: ',resin,thermoplastic,vulcanizedrubber',
+  },
+]
+const polyamides = [
+  {
+    label: 'Nylon',
+    short: 'PA',
+    value: ',resin,thermoplastic,polyamide,pa',
+  },
+  {
+    label: 'Nylon 12',
+    short: 'PA12',
+    value: ',resin,thermoplastic,polyamide,pa12',
+  },
+  {
+    label: 'Nylon 6',
+    short: 'PA6',
+    value: ',resin,thermoplastic,polyamide,pa6',
+  },
+  {
+    label: 'Nylon 6,6',
+    short: 'PA6,6',
+    value: ',resin,thermoplastic,polyamide,pa66',
+  },
+]
+const polyethylenes = [
+  {
+    label: 'High density polyethylene',
+    short: 'HDPE',
+    value: ',resin,thermoplastic,polyethylene,hdpe',
+  },
+  {
+    label: 'Low density polyethylene',
+    short: 'LDPE',
+    value: ',resin,thermoplastic,polyethylene,ldpe',
+  },
+  {
+    label: 'Medium density polyethylene',
+    short: 'MDPE',
+    value: ',resin,thermoplastic,polyethylene,mdpe',
+  },
+  {
+    label: 'Ultra high molecular weight polyethylene',
+    short: 'UHMWPE',
+    value: ',resin,thermoplastic,polyethylene,uhmwpe',
+  },
+]
+const fibers = [
+  {
+    label: 'Graphite / Carbon',
+    short: 'CF',
+    value: ',reinforcement,fiber,cf',
+  },
+  {
+    label: 'Glass / Fiberglass',
+    short: 'GF',
+    value: ',reinforcement,fiber,gf',
+  },
+  {
+    label: 'Aramid',
+    value: ',reinforcement,fiber,aramid',
+  },
+  {
+    label: 'Boron',
+    value: ',reinforcement,fiber,boron',
+  },
+  {
+    label: 'Ceramic',
+    value: ',reinforcement,fiber,ceramic',
+  },
+  {
+    label: 'Natural',
+    value: ',reinforcement,fiber,natural',
+  },
+]
+const particulates = [
+  {
+    label: 'Chopped fibers',
+    value: ',reinforcement,particulate,choppedfibers',
+  },
+  {
+    label: 'Platelets',
+    value: ',reinforcement,particulate,platelets',
+  },
+  {
+    label: 'Hollow spheres',
+    value: ',reinforcement,particulate,hollowspheres',
+  },
+  {
+    label: 'Carbon nanotubes',
+    short: 'CNT',
+    value: ',reinforcement,particulate,cnt',
+  },
+]
+const forms = [
+  {
+    label: 'Ground',
+    value: ',form,ground',
+  },
+  {
+    label: 'Shredded',
+    value: ',form,shredded',
+  },
+  {
+    label: 'Sheet molding compound',
+    short: 'SMC',
+    value: ',form,smc',
+  },
+  {
+    label: 'Bulk modling compound',
+    short: 'BMC',
+    value: ',form,bmc',
+  },
+  {
+    label: 'Bulk',
+    value: ',form,bulk',
+  },
+  {
+    label: 'Chopped tape',
+    value: ',form,choppedtape',
+  },
+  {
+    label: 'Trim offs',
+    value: ',form,trimoffs',
+  },
+  {
+    label: 'Mat',
+    value: ',form,mat',
+  },
+  {
+    label: 'Prepreg',
+    value: ',form,prepreg',
+  },
+]
+
+function PathListItem(props) {
+  const re = new RegExp('^' + props.value + '(,|$)')
+  return (
+    <ListGroupItem tag="button" action
+                   onClick={() => props.onClick(props.value)}
+                   active={re.test(props.state)}>
+      {props.label + (props.short ? ' (' + props.short + ')' : '')}
+    </ListGroupItem>
+  )
 }
 
-const reinforcement = {
-  fiber: {
-    cf: 'Graphite (Carbon; CF)',
-    gf: 'Glass (Fiberglass: GF)',
-    aramid: 'Aramid',
-    boron: 'Boron',
-    ceramic: 'Ceramic',
-    natural: 'Natural',
-  },
-  particulate: {
-    choppedfibers: 'Chopped fibers',
-    platelets: 'Platelets',
-    hollowspheres: 'Hollow spheres',
-    cnt: "Carbon nanotubes"
-  },
-}
-
-const form = {
-  ground: 'Ground',
-  shred: 'Shredded',
-  smc: 'Sheet molding compound (SMC)',
-  bmc: 'Bulk modling compound (BMC)',
-  bulk: 'Bulk',
-  choptape: 'Chopped tape',
-  trimoff: 'Trim offs',
-  mat: 'Mat',
-  prepreg: 'Prepreg',
+const PathList = props => {
+  const { items, children, ...other } = props
+  return (
+    <div>
+      <h3>{children.toString()}</h3>
+      <ListGroup className="mb-3">
+        {items.map(item =>
+          <PathListItem key={item.value} {...item} {...other} />
+        )}
+      </ListGroup>
+    </div>
+  )
 }
 
 class Path extends Component {
@@ -72,65 +251,56 @@ class Path extends Component {
     super(props)
 
     this.state = {
-      resin: '',
-      reinforcement: '',
-      form: ''
+      resin: ',',
+      reinforcement: ',',
+      form: ','
     }
 
     this.handleResinButtonClick = this.handleResinButtonClick.bind(this)
     this.handleResinItemClick = this.handleResinItemClick.bind(this)
-
     this.handleReinforcementButtonClick = this.handleReinforcementButtonClick.bind(this)
     this.handleReinforcementItemClick = this.handleReinforcementItemClick.bind(this)
-
     this.handleFormButtonClick = this.handleFormButtonClick.bind(this)
     this.handleFormItemClick = this.handleFormItemClick.bind(this)
-
     this.handleSelectButtonClick = this.handleSelectButtonClick.bind(this)
+    this.handleResetButtonClick = this.handleResetButtonClick.bind(this)
   }
 
   handleResinButtonClick() {
-    this.setState({resin: (this.state.resin == '' ? ',' : '')})
+    this.setState({resin: (/^,.+/.test(this.state.resin) ? ',' : ',resin')})
   }
 
-  handleResinItemClick(path, name) {
-    this.setState({resin: path + name})
+  handleResinItemClick(value) {
+    this.setState({resin: value})
   }
 
   handleReinforcementButtonClick() {
-    this.setState({reinforcement: (this.state.reinforcement == '' ? ',' : '')})
+    this.setState({reinforcement: (/^,.+/.test(this.state.reinforcement) ? ',' : ',reinforcement')})
   }
 
-  handleReinforcementItemClick(path, name) {
-    this.setState({reinforcement: path + name})
+  handleReinforcementItemClick(value) {
+    this.setState({reinforcement: value})
   }
 
   handleFormButtonClick() {
-    this.setState({form: (this.state.form == '' ? ',' : '')})
+    this.setState({form: (/^,.+/.test(this.state.form) ? ',' : ',form')})
   }
 
-  handleFormItemClick(path, name) {
-    this.setState({form: path + name})
+  handleFormItemClick(value) {
+    this.setState({form: value})
+  }
+
+  handleResetButtonClick() {
+    this.setState({
+      resin: ',',
+      reinforcement: ',',
+      form: ','
+    })
   }
 
   handleSelectButtonClick() {
-    const resin = this.state.resin ? this.state.resin : ','
-    const reinforcement = this.state.reinforcement ? this.state.reinforcement : ','
-    const form = this.state.form ? this.state.form : ','
-    const path = ',resin' + resin + ',reinforcement' + reinforcement + ',form' + form
+    const path = this.state.resin + ',' + this.state.reinforcement + ',' + this.state.form
     console.log(path)
-  }
-
-  toListGroupItems(path, mapping, handler) {
-    const items = []
-    for (const name in mapping) {
-      items.push(
-        <ListGroupItem key={name} tag="button" action  onClick={() => handler(path, name)} active={false}>
-          {mapping[name]}
-        </ListGroupItem>
-      )
-    }
-    return items
   }
 
   render() {
@@ -138,80 +308,57 @@ class Path extends Component {
       <div>
         <Row>
           <Col>
-            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleResinButtonClick} active={this.state.resin != ''}>Resin</Button>
-
-            {/^,($|thermoplastic,)/.test(this.state.resin) &&
-              <div>
-                <h3>Thermoplastic</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',thermoplastic,', resin.thermoplastic, this.handleResinItemClick)}
-                </ListGroup>
-              </div>
+            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleResinButtonClick} active={/^,resin,?/.test(this.state.resin)}>Resin</Button>
+            {/^,resin,thermoplastic,polyamide(,|$)/.test(this.state.resin) &&
+              <PathList state={this.state.resin} items={polyamides} onClick={this.handleResinItemClick}>
+                Polyamide
+              </PathList>
             }
-            {/^,thermoplastic,polyamide/.test(this.state.resin) &&
-              <div>
-                <h3>Polyamide</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',thermoplastic,polyamide,', resin.polyamide, this.handleResinItemClick)}
-                </ListGroup>
-              </div>
+            {/^,resin,thermoplastic,polyethylene(,|$)/.test(this.state.resin) &&
+              <PathList state={this.state.resin} items={polyethylenes} onClick={this.handleResinItemClick}>
+                Polyethylene
+              </PathList>
             }
-            {/^,thermoplastic,pe/.test(this.state.resin) &&
-              <div>
-                <h3>Polyethylene</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',thermoplastic,pe,', resin.polyethylene, this.handleResinItemClick)}
-                </ListGroup>
-              </div>
+            {/^,resin(,thermoplastic|$)/.test(this.state.resin) &&
+              <PathList state={this.state.resin} items={thermoplastics} onClick={this.handleResinItemClick}>
+                Thermoplastic
+              </PathList>
             }
-            {/^,($|thermoset,)/.test(this.state.resin) &&
-              <div>
-                <h3>Thermoset</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',thermoset,', resin.thermoset, this.handleResinItemClick)}
-                </ListGroup>
-              </div>
+            {/^,resin(,thermoset|$)/.test(this.state.resin) &&
+              <PathList state={this.state.resin} items={thermosets} onClick={this.handleResinItemClick}>
+                Thermoset
+              </PathList>
             }
           </Col>
           <Col>
-            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleReinforcementButtonClick} active={this.state.reinforcement != ''}>Reinforcement</Button>
-
-            {/^,(fiber,)?/.test(this.state.reinforcement) &&
-              <div>
-                <h3>Fiber</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',fiber,', reinforcement.fiber, this.handleReinforcementItemClick)}
-                </ListGroup>
-              </div>
+            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleReinforcementButtonClick} active={/^,reinforcement,?/.test(this.state.reinforcement)}>Reinforcement</Button>
+            {/^,reinforcement(,fiber|$)/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={fibers} onClick={this.handleReinforcementItemClick}>
+                Fiber
+              </PathList>
             }
-            {/^,(particulate,)?/.test(this.state.reinforcement) &&
-              <div>
-                <h3>Particulate</h3>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',particulate,', reinforcement.particulate, this.handleReinforcementItemClick)}
-                </ListGroup>
-              </div>
+            {/^,reinforcement(,particulate|$)/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={particulates} onClick={this.handleReinforcementItemClick}>
+                Particulates
+              </PathList>
             }
           </Col>
           <Col>
-            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleFormButtonClick} active={this.state.form != ''}>Form</Button>
-
-            {this.state.form &&
-              <div>
-                <ListGroup className="mb-3">
-                  {this.toListGroupItems(',', form, this.handleFormItemClick)}
-                </ListGroup>
-              </div>
+            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleFormButtonClick} active={/^,form,?/.test(this.state.form)}>Form</Button>
+            {/^,form/.test(this.state.form) &&
+              <PathList state={this.state.form} items={forms} onClick={this.handleFormItemClick}>
+                Form
+              </PathList>
             }
           </Col>
         </Row>
-
-        {(this.state.resin || this.state.reinforcement || this.state.form) &&
+        {(this.state.resin != ',' || this.state.reinforcement != ',' || this.state.form != ',') &&
           <Row>
             <Col>
-              <div className="d-flex flex-row-reverse">
-                <Button color="primary" size="lg" block className='mb-3' onClick={this.handleSelectButtonClick}>Select</Button>
-              </div>
+              <Button color="danger" size="lg" block className='mb-3' onClick={this.handleResetButtonClick}>Reset</Button>
+            </Col>
+            <Col>
+              <Button color="success" size="lg" block className='mb-3' onClick={this.handleSelectButtonClick}>Select</Button>
             </Col>
           </Row>
         }

@@ -15,7 +15,7 @@ const config = {
           loader: 'babel-loader',
           options: {
             babelrc: false,
-            presets: ['env', 'react']
+            presets: ['env', 'stage-3', 'react']
           }
         }
       },
