@@ -10,12 +10,12 @@ const thermoplastics = [
   },
   {
     label: 'Polyamide',
-    value: ',resin,thermoplastic,polyamide',
+    value: ',resin,thermoplastic,polyamide,',
   },
   {
     label: 'Polyethylene',
     short: 'PE',
-    value: ',resin,thermoplastic,pe',
+    value: ',resin,thermoplastic,pe,',
   },
   {
     label: 'Polycarbonate',
@@ -137,28 +137,28 @@ const fibers = [
   {
     label: 'Graphite / Carbon',
     short: 'CF',
-    value: ',reinforcement,fiber,cf',
+    value: ',reinforcement,fiber,cf,',
   },
   {
     label: 'Glass / Fiberglass',
     short: 'GF',
-    value: ',reinforcement,fiber,gf',
+    value: ',reinforcement,fiber,gf,',
   },
   {
     label: 'Aramid',
-    value: ',reinforcement,fiber,aramid',
+    value: ',reinforcement,fiber,aramid,',
   },
   {
     label: 'Boron',
-    value: ',reinforcement,fiber,boron',
+    value: ',reinforcement,fiber,boron,',
   },
   {
     label: 'Ceramic',
-    value: ',reinforcement,fiber,ceramic',
+    value: ',reinforcement,fiber,ceramic,',
   },
   {
     label: 'Natural',
-    value: ',reinforcement,fiber,natural',
+    value: ',reinforcement,fiber,natural,',
   },
 ]
 const particulates = [
@@ -267,7 +267,7 @@ class Path extends Component {
   }
 
   handleResinButtonClick() {
-    this.setState({resin: (/^,.+/.test(this.state.resin) ? ',' : ',resin')})
+    this.setState({resin: (/^,.+/.test(this.state.resin) ? ',' : ',resin,')})
   }
 
   handleResinItemClick(value) {
@@ -275,7 +275,7 @@ class Path extends Component {
   }
 
   handleReinforcementButtonClick() {
-    this.setState({reinforcement: (/^,.+/.test(this.state.reinforcement) ? ',' : ',reinforcement')})
+    this.setState({reinforcement: (/^,.+/.test(this.state.reinforcement) ? ',' : ',reinforcement,')})
   }
 
   handleReinforcementItemClick(value) {
@@ -283,7 +283,7 @@ class Path extends Component {
   }
 
   handleFormButtonClick() {
-    this.setState({form: (/^,.+/.test(this.state.form) ? ',' : ',form')})
+    this.setState({form: (/^,.+/.test(this.state.form) ? ',' : ',form,')})
   }
 
   handleFormItemClick(value) {
@@ -299,7 +299,7 @@ class Path extends Component {
   }
 
   handleSelectButtonClick() {
-    const path = this.state.resin + ',' + this.state.reinforcement + ',' + this.state.form
+    const path = this.state.resin + ' ' + this.state.reinforcement + ' ' + this.state.form
     console.log(path)
   }
 
@@ -309,22 +309,22 @@ class Path extends Component {
         <Row>
           <Col>
             <Button color="primary" size="lg" block className="mb-3" onClick={this.handleResinButtonClick} active={/^,resin,?/.test(this.state.resin)}>Resin</Button>
-            {/^,resin,thermoplastic,polyamide(,|$)/.test(this.state.resin) &&
+            {/^,resin,thermoplastic,polyamide,/.test(this.state.resin) &&
               <PathList state={this.state.resin} items={polyamides} onClick={this.handleResinItemClick}>
                 Polyamide
               </PathList>
             }
-            {/^,resin,thermoplastic,polyethylene(,|$)/.test(this.state.resin) &&
+            {/^,resin,thermoplastic,polyethylene,/.test(this.state.resin) &&
               <PathList state={this.state.resin} items={polyethylenes} onClick={this.handleResinItemClick}>
                 Polyethylene
               </PathList>
             }
-            {/^,resin(,thermoplastic|$)/.test(this.state.resin) &&
+            {/^,resin,(thermoplastic|$)/.test(this.state.resin) &&
               <PathList state={this.state.resin} items={thermoplastics} onClick={this.handleResinItemClick}>
                 Thermoplastic
               </PathList>
             }
-            {/^,resin(,thermoset|$)/.test(this.state.resin) &&
+            {/^,resinc(thermoset|$)/.test(this.state.resin) &&
               <PathList state={this.state.resin} items={thermosets} onClick={this.handleResinItemClick}>
                 Thermoset
               </PathList>
