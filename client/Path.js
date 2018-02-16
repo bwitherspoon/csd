@@ -151,11 +151,11 @@ const fibers = [
   },
   {
     label: 'Boron',
-    value: ',reinforcement,fiber,boron,',
+    value: ',reinforcement,fiber,boron',
   },
   {
     label: 'Ceramic',
-    value: ',reinforcement,fiber,ceramic,',
+    value: ',reinforcement,fiber,ceramic',
   },
   {
     label: 'Natural',
