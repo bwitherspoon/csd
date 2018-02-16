@@ -19,7 +19,7 @@ class ScrapForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="origin-company">Origin Company:</Label>
           </Col>
           <Col>
@@ -27,7 +27,7 @@ class ScrapForm extends Component {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="original-material">Original Material:</Label>
           </Col>
           <Col>
@@ -35,7 +35,7 @@ class ScrapForm extends Component {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="manufacturing-method">Manufacturing Method:</Label>
           </Col>
           <Col>
@@ -43,7 +43,7 @@ class ScrapForm extends Component {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="current-location">Current Location:</Label>
           </Col>
           <Col>
@@ -51,7 +51,7 @@ class ScrapForm extends Component {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="quantity">Quantity:</Label>
           </Col>
           <Col>
@@ -59,7 +59,7 @@ class ScrapForm extends Component {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Label for="image-file">Image:</Label>
           </Col>
           <Col>
@@ -69,7 +69,7 @@ class ScrapForm extends Component {
         <FormGroup row>
           <Col>
             <Label for="research-notes">Research Notes:</Label>
-            <Input type="textarea" name="notes" id="research-notes" />
+            <Input type="textarea" rows="4" name="notes" id="research-notes" />
           </Col>
         </FormGroup>
         <FormGroup row>
