@@ -4,12 +4,14 @@ import { Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap'
 class ScrapForm extends Component {
   constructor(props) {
     super(props)
+    this.handleCancel = props.onCancel
+    this.handlePreview = props.onPreview
+    this.handleInsert = props.onInsert
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.onInsert = props.onInsert
-    this.onReset = props.onReset
   }
 
   handleSubmit(event) {
+    console.log(event.target.value)
     event.preventDefault()
   }
 
@@ -72,12 +74,12 @@ class ScrapForm extends Component {
         </FormGroup>
         <FormGroup row>
           <Col>
-            <Button outline color="secondary" size="lg" block onClick={this.onReset}>
-              Reset
+            <Button outline color="secondary" size="lg" block onClick={this.handleCancel}>
+              Cancel
             </Button>
           </Col>
           <Col>
-            <Button type="submit" color="secondary" size="lg" block>
+            <Button outline color="secondary" size="lg" block onClick={this.handlePreview}>
               Preview
             </Button>
           </Col>

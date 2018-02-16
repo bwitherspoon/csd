@@ -20,21 +20,27 @@ class App extends Component {
     this.state = { path: '' }
 
     this.handleCreate = this.handleCreate.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
+    this.handlePreview = this.handlePreview.bind(this)
     this.handleInsert = this.handleInsert.bind(this)
-    this.handleReset = this.handleReset.bind(this)
   }
 
   handleCreate(path) {
     this.setState({ path: path })
   }
 
+  handleCancel() {
+    this.setState({ path: '' })
+  }
+
+  handlePreview() {
+    console.log('preview')
+  }
+
   handleInsert(path) {
     console.log(path)
   }
 
-  handleReset() {
-    this.setState({ path: '' })
-  }
 
   render() {
     return (
@@ -45,7 +51,7 @@ class App extends Component {
           <ScrapPath onCreate={this.handleCreate} />
         }
         {this.state.path != '' &&
-            <ScrapForm onReset={this.handleReset} onInsert={this.handleInsert} />
+            <ScrapForm onCancel={this.handleCancel} onPreview={this.handlePreview} onInsert={this.handleInsert} />
         }
       </Container>
     )
