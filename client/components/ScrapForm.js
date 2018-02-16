@@ -6,7 +6,7 @@ class ScrapForm extends Component {
     super(props)
     this.handleCancel = props.onCancel
     this.handlePreview = props.onPreview
-    this.handleInsert = props.onInsert
+    this.handleSave = props.onSave
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -83,8 +83,8 @@ class ScrapForm extends Component {
             </Button>
           </Col>
           <Col>
-            <Button type="submit" color="secondary" size="lg" block>
-              Insert
+            <Button color="primary" size="lg" block onClick={this.handleSave}>
+              Save
             </Button>
           </Col>
         </FormGroup>

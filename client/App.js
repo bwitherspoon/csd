@@ -22,7 +22,7 @@ class App extends Component {
     this.handleCreate = this.handleCreate.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.handlePreview = this.handlePreview.bind(this)
-    this.handleInsert = this.handleInsert.bind(this)
+    this.handleSave = this.handleSave.bind(this)
   }
 
   handleCreate(path) {
@@ -34,11 +34,11 @@ class App extends Component {
   }
 
   handlePreview() {
-    console.log('preview')
+    // TODO
   }
 
-  handleInsert(path) {
-    console.log(path)
+  handleSave() {
+    // TODO
   }
 
 
@@ -51,7 +51,7 @@ class App extends Component {
           <ScrapPath onCreate={this.handleCreate} />
         }
         {this.state.path != '' &&
-            <ScrapForm onCancel={this.handleCancel} onPreview={this.handlePreview} onInsert={this.handleInsert} />
+            <ScrapForm onCancel={this.handleCancel} onPreview={this.handlePreview} onSave={this.handleSave} />
         }
       </Container>
     )
