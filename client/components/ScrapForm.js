@@ -11,7 +11,6 @@ class ScrapForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log(event.target.value)
     event.preventDefault()
   }
 
