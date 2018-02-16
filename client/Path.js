@@ -173,15 +173,15 @@ const graphites = [
   },
   {
     label: 'Intermediate modulus',
-    value: ',reinforcement,fiber,graphite,intermediatemodulus',
+    value: ',reinforcement,fiber,graphite,intermediate',
   },
   {
     label: 'High modulus',
-    value: ',reinforcement,fiber,graphite,highmodulus',
+    value: ',reinforcement,fiber,graphite,high',
   },
   {
     label: 'Ultra modulus',
-    value: ',reinforcement,fiber,graphite,ultrahighmodulus',
+    value: ',reinforcement,fiber,graphite,ultrahigh',
   },
   {
     label: 'Other',
