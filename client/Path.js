@@ -188,6 +188,68 @@ const graphites = [
     value: ',reinforcement,fiber,graphite,other',
   },
 ]
+const glasses = [
+  {
+    label: 'A-glass / Alkali glass',
+    value: ',reinforcement,fiber,glass,alkali',
+  },
+  {
+    label: 'C-glass / Chemical glass',
+    value: ',reinforcement,fiber,glass,chemical',
+  },
+  {
+    label: 'E-glass / Electrical glass',
+    value: ',reinforcement,fiber,glass,electrical',
+  },
+  {
+    label: 'S-glass / Structural glass',
+    value: ',reinforcement,fiber,glass,structural',
+  },
+  {
+    label: 'D-glass / Dielectric glass',
+    value: ',reinforcement,fiber,glass,dielectric',
+  },
+]
+const aramids = [
+  {
+    label: 'Kevlar',
+    value: ',reinforcement,fiber,aramid,kevlar',
+  },
+  {
+    label: 'Kevlar',
+    value: ',reinforcement,fiber,aramid,twaron',
+  },
+  {
+    label: 'Other',
+    value: ',reinforcement,fiber,aramid,other',
+  },
+]
+const naturals = [
+  {
+    label: 'Bamboo',
+    value: ',reinforcement,fiber,natural,bamboo',
+  },
+  {
+    label: 'Sisal',
+    value: ',reinforcement,fiber,natural,sisal',
+  },
+  {
+    label: 'Hemp',
+    value: ',reinforcement,fiber,natural,hemp',
+  },
+  {
+    label: 'Jute',
+    value: ',reinforcement,fiber,natural,jute',
+  },
+  {
+    label: 'Kenaf',
+    value: ',reinforcement,fiber,natural,kenaf',
+  },
+  {
+    label: 'Other',
+    value: ',reinforcement,fiber,natural,other',
+  },
+]
 const particulates = [
   {
     label: 'Chopped fibers',
@@ -366,7 +428,22 @@ class Path extends Component {
             }
             {/^,reinforcement,($|particulate,)/.test(this.state.reinforcement) &&
               <PathList state={this.state.reinforcement} items={particulates} onClick={this.handleReinforcementItemClick}>
-                Particulates
+                Particulate
+              </PathList>
+            }
+            {/^,reinforcement,fiber,graphite,/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={graphites} onClick={this.handleReinforcementItemClick}>
+                Graphite
+              </PathList>
+            }
+            {/^,reinforcement,fiber,aramid,/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={aramids} onClick={this.handleReinforcementItemClick}>
+                Aramids
+              </PathList>
+            }
+            {/^,reinforcement,fiber,natural,/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={naturals} onClick={this.handleReinforcementItemClick}>
+                Natural
               </PathList>
             }
           </Col>
