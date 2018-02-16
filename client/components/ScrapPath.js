@@ -335,7 +335,7 @@ const PathList = props => {
   )
 }
 
-class Path extends Component {
+class ScrapPath extends Component {
   constructor(props) {
     super(props)
 
@@ -459,17 +459,17 @@ class Path extends Component {
         {(this.state.resin != '' || this.state.reinforcement != '' || this.state.form != '') &&
           <Row>
             <Col>
-              <Button color="danger" size="lg" block className='mb-3'
+              <Button outline color="secondary" size="lg" block className='mb-3'
                       onClick={this.handleResetButtonClick}
                       disabled={this.state.resin == '' && this.state.reinforcement == '' && this.state.form == ''}>
                 Reset
               </Button>
             </Col>
             <Col>
-              <Button color="success" size="lg" block className='mb-3'
+              <Button color="secondary" size="lg" block className='mb-3'
                       onClick={this.handleSelectButtonClick}
                       disabled={this.state.resin.endsWith(',') || this.state.reinforcement.endsWith(',') || this.state.form.endsWith(',')}>
-                Select
+                Create
               </Button>
             </Col>
           </Row>
@@ -479,4 +479,4 @@ class Path extends Component {
   }
 }
 
-export default Path;
+export default ScrapPath;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
-import Path from './Path'
+import ScrapPath from './components/ScrapPath'
 
 class Header extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <Container>
         <Header />
-        <Path />
+        <ScrapPath />
       </Container>
     )
   }
