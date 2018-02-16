@@ -345,13 +345,15 @@ class ScrapPath extends Component {
       form: ''
     }
 
+    this.onCreate = props.onCreate
+
     this.handleResinButtonClick = this.handleResinButtonClick.bind(this)
     this.handleResinItemClick = this.handleResinItemClick.bind(this)
     this.handleReinforcementButtonClick = this.handleReinforcementButtonClick.bind(this)
     this.handleReinforcementItemClick = this.handleReinforcementItemClick.bind(this)
     this.handleFormButtonClick = this.handleFormButtonClick.bind(this)
     this.handleFormItemClick = this.handleFormItemClick.bind(this)
-    this.handleSelectButtonClick = this.handleSelectButtonClick.bind(this)
+    this.handleCreateButtonClick = this.handleCreateButtonClick.bind(this)
     this.handleResetButtonClick = this.handleResetButtonClick.bind(this)
   }
 
@@ -387,9 +389,9 @@ class ScrapPath extends Component {
     })
   }
 
-  handleSelectButtonClick() {
-    const path = this.state.resin + ' ' + this.state.reinforcement + ' ' + this.state.form
-    console.log(path)
+  handleCreateButtonClick() {
+    const path = this.state.resin + this.state.reinforcement + this.state.form
+    this.onCreate(path)
   }
 
   render() {
@@ -467,7 +469,7 @@ class ScrapPath extends Component {
             </Col>
             <Col>
               <Button color="secondary" size="lg" block className='mb-3'
-                      onClick={this.handleSelectButtonClick}
+                      onClick={this.handleCreateButtonClick}
                       disabled={this.state.resin.endsWith(',') || this.state.reinforcement.endsWith(',') || this.state.form.endsWith(',')}>
                 Create
               </Button>
