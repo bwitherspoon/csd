@@ -249,7 +249,7 @@ const forms = [
 ]
 
 function PathListItem(props) {
-  const re = new RegExp('^' + props.value + '(,|$)')
+  const re = new RegExp('^' + props.value + (props.value.endsWith(',') ? '' : '$'))
   return (
     <ListGroupItem tag="button" action
                    onClick={() => props.onClick(props.value)}
