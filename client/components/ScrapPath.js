@@ -269,46 +269,6 @@ const particulates = [
     value: ',reinforcement,particulate,cnt',
   },
 ]
-const forms = [
-  {
-    label: 'Ground',
-    value: ',form,ground',
-  },
-  {
-    label: 'Shredded',
-    value: ',form,shredded',
-  },
-  {
-    label: 'Sheet molding compound',
-    short: 'SMC',
-    value: ',form,smc',
-  },
-  {
-    label: 'Bulk modling compound',
-    short: 'BMC',
-    value: ',form,bmc',
-  },
-  {
-    label: 'Bulk',
-    value: ',form,bulk',
-  },
-  {
-    label: 'Chopped tape',
-    value: ',form,choppedtape',
-  },
-  {
-    label: 'Trim offs',
-    value: ',form,trimoffs',
-  },
-  {
-    label: 'Mat',
-    value: ',form,mat',
-  },
-  {
-    label: 'Prepreg',
-    value: ',form,prepreg',
-  },
-]
 
 function PathListItem(props) {
   const re = new RegExp('^' + props.value + (props.value.endsWith(',') ? '' : '$'))
@@ -341,8 +301,7 @@ class ScrapPath extends Component {
 
     this.state = {
       resin: '',
-      reinforcement: '',
-      form: ''
+      reinforcement: ''
     }
 
     this.onCreate = props.onCreate
@@ -351,8 +310,6 @@ class ScrapPath extends Component {
     this.handleResinItemClick = this.handleResinItemClick.bind(this)
     this.handleReinforcementButtonClick = this.handleReinforcementButtonClick.bind(this)
     this.handleReinforcementItemClick = this.handleReinforcementItemClick.bind(this)
-    this.handleFormButtonClick = this.handleFormButtonClick.bind(this)
-    this.handleFormItemClick = this.handleFormItemClick.bind(this)
     this.handleCreateButtonClick = this.handleCreateButtonClick.bind(this)
     this.handleResetButtonClick = this.handleResetButtonClick.bind(this)
   }
@@ -373,24 +330,15 @@ class ScrapPath extends Component {
     this.setState({reinforcement: value})
   }
 
-  handleFormButtonClick() {
-    this.setState({form: (/^,.+/.test(this.state.form) ? '' : ',form,')})
-  }
-
-  handleFormItemClick(value) {
-    this.setState({form: value})
-  }
-
   handleResetButtonClick() {
     this.setState({
       resin: '',
       reinforcement: '',
-      form: ''
     })
   }
 
   handleCreateButtonClick() {
-    const path = this.state.resin + this.state.reinforcement + this.state.form
+    const path = this.state.resin + this.state.reinforcement
     this.onCreate(path)
   }
 
@@ -438,6 +386,11 @@ class ScrapPath extends Component {
                 Graphite
               </PathList>
             }
+            {/^,reinforcement,fiber,glass,/.test(this.state.reinforcement) &&
+              <PathList state={this.state.reinforcement} items={glasses} onClick={this.handleReinforcementItemClick}>
+                Glass
+              </PathList>
+            }
             {/^,reinforcement,fiber,aramid,/.test(this.state.reinforcement) &&
               <PathList state={this.state.reinforcement} items={aramids} onClick={this.handleReinforcementItemClick}>
                 Aramids
@@ -449,28 +402,20 @@ class ScrapPath extends Component {
               </PathList>
             }
           </Col>
-          <Col>
-            <Button color="primary" size="lg" block className="mb-3" onClick={this.handleFormButtonClick} active={/^,form,?/.test(this.state.form)}>Form</Button>
-            {/^,form,/.test(this.state.form) &&
-              <PathList state={this.state.form} items={forms} onClick={this.handleFormItemClick}>
-                Form
-              </PathList>
-            }
-          </Col>
         </Row>
-        {(this.state.resin != '' || this.state.reinforcement != '' || this.state.form != '') &&
+        {(this.state.resin != '' || this.state.reinforcement != '') &&
           <Row>
             <Col>
               <Button outline color="secondary" size="lg" block className='mb-3'
                       onClick={this.handleResetButtonClick}
-                      disabled={this.state.resin == '' && this.state.reinforcement == '' && this.state.form == ''}>
+                      disabled={this.state.resin == '' && this.state.reinforcement == ''}>
                 Reset
               </Button>
             </Col>
             <Col>
               <Button color="secondary" size="lg" block className='mb-3'
                       onClick={this.handleCreateButtonClick}
-                      disabled={this.state.resin.endsWith(',') || this.state.reinforcement.endsWith(',') || this.state.form.endsWith(',')}>
+                      disabled={this.state.resin.endsWith(',') || this.state.reinforcement.endsWith(',')}>
                 Create
               </Button>
             </Col>
