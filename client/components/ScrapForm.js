@@ -2,6 +2,47 @@ import React, { Component } from 'react'
 import { Row, Col, Form, FormGroup, Label, Button,
          Input, InputGroup, InputGroupAddon } from 'reactstrap'
 
+const forms = [
+ {
+   label: 'Ground',
+   value: 'ground',
+ },
+ {
+   label: 'Shredded',
+   value: 'shredded',
+ },
+ {
+   label: 'Sheet molding compound',
+   short: 'SMC',
+   value: 'smc',
+ },
+ {
+   label: 'Bulk modling compound',
+   short: 'BMC',
+   value: 'bmc',
+ },
+ {
+   label: 'Bulk',
+   value: 'bulk',
+ },
+ {
+   label: 'Chopped tape',
+   value: 'choppedtape',
+ },
+ {
+   label: 'Trim offs',
+   value: 'trimoffs',
+ },
+ {
+   label: 'Mat',
+   value: 'mat',
+ },
+ {
+   label: 'Prepreg',
+   value: 'prepreg',
+ },
+]
+
 class ScrapForm extends Component {
   constructor(props) {
     super(props)
@@ -12,6 +53,7 @@ class ScrapForm extends Component {
       manufacturing_method: '',
       current_location: '',
       quantity: 0,
+      form: '',
       research_notes: '',
     }
 
@@ -29,6 +71,7 @@ class ScrapForm extends Component {
       manufacturing_method: event.target.manufacturing_method.value,
       current_location: event.target.current_location.value,
       quantity: event.target.quantity.value,
+      form: event.target.form.value,
       research_notes: event.target.research_notes.value,
     })
     event.preventDefault()
@@ -87,10 +130,24 @@ class ScrapForm extends Component {
         </FormGroup>
         <FormGroup row>
           <Col sm={3}>
+            <Label for="form">Form:</Label>
+          </Col>
+          <Col>
+            <Input type="select" name="form" id="form">
+              {forms.map(form =>
+                <option key={form.value} value={form.value}>
+                  {form.label + (form.short ? ' (' + form.short + ')' : '')}
+                </option>
+              )}
+            </Input>
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Col sm={3}>
             <Label for="image-file">Image:</Label>
           </Col>
           <Col>
-            <Input type="file" name="image-file" id="image-file" />
+            <Input type="file" name="image_file" id="image-file" />
           </Col>
         </FormGroup>
         <FormGroup row>
