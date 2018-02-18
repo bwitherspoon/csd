@@ -8,7 +8,6 @@ class Header extends Component {
     return (
       <header className="header">
         <img src='/images/logo.svg' alt='Composites Recycling' width='64px' height='64px'/>
-        <hr />
       </header>
     )
   }
