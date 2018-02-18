@@ -489,19 +489,19 @@ class ScrapForm extends Component {
         <FormGroup row>
           <Col>
             <FormGroup>
-              <Label for="origin-company">Origin Company:</Label>
+              <Label for="origin-company">Origin Company</Label>
               <Input type="text" name="origin_company" id="origin-company"
                      defaultValue={this.state.origin_company}
                      disabled={this.isDisabled()} />
             </FormGroup>
             <FormGroup>
-              <Label for="manufacturing-method">Manufacturing Method:</Label>
+              <Label for="manufacturing-method">Manufacturing Method</Label>
               <Input type="text" name="manufacturing_method" id="manufacturing-method"
                      defaultValue={this.state.manufacturing_method}
                      disabled={this.isDisabled()} />
             </FormGroup>
             <FormGroup>
-              <Label for="quantity">Quantity:</Label>
+              <Label for="quantity">Quantity</Label>
               <InputGroup>
                 <Input type="number" min="0" name="quantity" id="quantity"
                        defaultValue={this.state.quantity}
@@ -512,19 +512,19 @@ class ScrapForm extends Component {
           </Col>
           <Col>
             <FormGroup>
-              <Label for="original-material">Original Material:</Label>
+              <Label for="original-material">Original Material</Label>
               <Input type="text" name="original_material" id="original-material"
                      defaultValue={this.state.original_material}
                      disabled={this.isDisabled()} />
             </FormGroup>
             <FormGroup>
-              <Label for="current-location">Current Location:</Label>
+              <Label for="current-location">Current Location</Label>
               <Input type="text" name="current_location" id="current-location"
                      defaultValue={this.state.current_location}
                      disabled={this.isDisabled()} />
             </FormGroup>
             <FormGroup>
-              <Label for="form">Form:</Label>
+              <Label for="form">Form</Label>
               <Input type="select" name="form" id="form"
                      disabled={this.isDisabled()}>
                 {forms.map(form =>
