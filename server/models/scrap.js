@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
 
 const ScrapSchema = mongoose.Schema({
-  path: String,
-  manufacturing: String,
-  origin: String,
-  location: String,
+  resin: String,
+  reinforcement: String,
+  form: String,
+  origin_company: String,
+  original_company: String,
+  manufacturing_method: String,
+  current_location: String,
   quantity: Number,
-  notes: String
+  research_notes: String
 })
 
 module.exports = mongoose.model('Scrap', ScrapSchema)
