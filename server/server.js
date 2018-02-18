@@ -6,6 +6,7 @@ const express = require('express')
 const session = require('express-session')
 
 const database = require('./database')
+const scrap = require('./routes/scrap')
 const user = require('./routes/user')
 
 const app = express()
@@ -22,6 +23,7 @@ app.use(session({
 }))
 
 // Router-level middleware
+app.use('/scrap', scrap)
 app.use('/user', user)
 
 // Application-level middleware
