@@ -9,4 +9,4 @@ const ScrapSchema = mongoose.Schema({
   notes: String
 })
 
-module.exports = mongoose.model('Scrap', MaterialSchema)
+module.exports = mongoose.model('Scrap', ScrapSchema)
