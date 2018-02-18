@@ -30,7 +30,8 @@
     "pug": "^2.0.0-rc.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "reactstrap": "^5.0.0-beta"
+    "reactstrap": "^5.0.0-beta",
+    "remarkable": "^1.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
