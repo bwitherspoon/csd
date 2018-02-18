@@ -340,17 +340,13 @@ class ScrapForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      resin: '',
-      reinforcement: '',
-      form: '',
-      origin_company: '',
-      original_material: '',
-      manufacturing_method: '',
-      current_location: '',
-      quantity: 0,
-      research_notes: '',
+    if (props.state) {
+      this.state = props.state
+    } else {
+      this.state = ScrapForm.defaultState
     }
+
+    this.handleView = props.onView
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -381,30 +377,24 @@ class ScrapForm extends Component {
   }
 
   handleSubmit(event) {
-    this.setState({
+    const state = {
+      resin: this.state.resin,
+      reinforcement: this.state.reinforcement,
+      form: event.target.form.value,
       origin_company: event.target.origin_company.value,
       original_material: event.target.original_material.value,
       manufacturing_method: event.target.manufacturing_method.value,
       current_location: event.target.current_location.value,
       quantity: event.target.quantity.value,
-      form: event.target.form.value,
       research_notes: event.target.research_notes.value,
-    })
+    }
+    this.setState(state)
+    this.handleView(state)
     event.preventDefault()
   }
 
   handleReset(event) {
-    this.setState({
-      resin: '',
-      reinforcement: '',
-      form: '',
-      origin_company: '',
-      original_material: '',
-      manufacturing_method: '',
-      current_location: '',
-      quantity: 0,
-      research_notes: '',
-    })
+    this.setState(ScrapForm.defaultState)
     event.preventDefault()
   }
 
@@ -571,6 +561,18 @@ class ScrapForm extends Component {
       </Form>
     )
   }
+}
+
+ScrapForm.defaultState = {
+  resin: '',
+  reinforcement: '',
+  form: '',
+  origin_company: '',
+  original_material: '',
+  manufacturing_method: '',
+  current_location: '',
+  quantity: 0,
+  research_notes: '',
 }
 
 export default ScrapForm
