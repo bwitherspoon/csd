@@ -325,9 +325,9 @@ const PathListItem = props => {
 const PathList = props => {
   const { items, children, ...other } = props
   return (
-    <div>
+    <div className="m-3">
       <h3>{children.toString()}</h3>
-      <ListGroup className="mb-3">
+      <ListGroup>
         {items.map(item =>
           <PathListItem key={item.value} {...item} {...other} />
         )}
@@ -411,7 +411,7 @@ class ScrapForm extends Component {
       <Form onReset= {this.handleReset} onSubmit={this.handleSubmit}>
         <FormGroup row>
           <Col>
-            <Button color="primary" size="lg" block className="mb-3"
+            <Button className="m-2" color="primary" size="lg" block
                     onClick={this.handleResinToggle}
                     active={/^,resin,?/.test(this.state.resin)}>
               Resin
@@ -442,7 +442,7 @@ class ScrapForm extends Component {
             }
           </Col>
           <Col>
-            <Button color="primary" size="lg" block className="mb-3"
+            <Button className="m-2" color="primary" size="lg" block
                     onClick={this.handleReinforcementToggle}
                     active={/^,reinforcement,?/.test(this.state.reinforcement)}>
               Reinforcement
