@@ -538,7 +538,7 @@ class ScrapForm extends Component {
         </FormGroup>
         <FormGroup row>
           <Col>
-            <Label for="research-notes">Research Notes:</Label>
+            <Label for="research-notes">Research Notes</Label>
             <Input type="textarea" rows="5" name="research_notes" id="research-notes"
                    defaultValue={this.state.research_notes}
                    disabled={this.isDisabled()} />
