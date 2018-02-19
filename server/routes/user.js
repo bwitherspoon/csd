@@ -1,8 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const User = require('../models/user')
-
 const router = express.Router()
 const parser = bodyParser.urlencoded({
   extended: false
@@ -28,17 +26,7 @@ router.post('/register', authenticate, parser, (req, res) => {
     res.status(400).end()
     return
   }
-  const usr = new User(req.body.email, req.body.password)
-  usr.add(function (err, ok) {
-    if (err) {
-      console.error(err.stack)
-      res.status(500).end()
-    } else if (!ok) {
-      res.status(400).end()
-    } else {
-      res.status(200).end()
-    }
-  })
+  res.status(500).end()
 })
 
 router.get('/login', (req, res) => {
@@ -50,36 +38,9 @@ router.post('/login', parser, (req, res) => {
     res.status(400).end()
     return
   }
-  User.find(req.body.email, function (err, usr) {
-    if (err) {
-      console.error(err.stack)
-      res.status(500).end()
-    } else if (!usr) {
-      console.log("User " + req.body.email + " does not exist")
-      res.status(400)
-      res.render('login', {
-        error: 'Email or password incorrect'
-      })
-    } else {
-      usr.verify(req.body.password, function (err, ok) {
-        if (err) {
-          console.error(err.stack)
-          res.status(500).end()
-        } else if (!ok) {
-          console.log("User " + usr.id + " failed authentication")
-          res.status(400)
-          res.render('login', {
-            error: 'Email or password incorrect'
-          })
-        } else {
-          console.log("User " + usr.id + " passed authentication")
-          req.session.user = usr
-          const referer = req.session.redirect || '/'
-          delete req.session.redirect
-          res.redirect(referer)
-        }
-      })
-    }
+  res.status(404)
+  res.render('login', {
+    error: 'Email or password incorrect'
   })
 })
 
@@ -94,13 +55,6 @@ router.all('/logout', (req, res) => {
       }
     })
   }
-})
-
-router.get('/folder', authenticate, (req, res) => {
-  res.render('folder', {
-    user: req.session.user.id,
-    authenticated: true
-  })
 })
 
 module.exports = router
