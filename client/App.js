@@ -45,10 +45,11 @@ class App extends Component {
     fetch('/scrap', {
       method: 'POST',
       body: JSON.stringify(this.state.data),
+      credentials: 'same-origin',
       headers: new Headers({
         'Content-Type': 'application/json',
-        'credentials': 'same-origin',
-      })
+      }),
+      redirect: 'error',
     })
     .then(res => {
       this.setState({ status: res.statusText })
