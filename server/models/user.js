@@ -45,7 +45,7 @@ UserSchema.methods.hash = function (secret) {
 
 UserSchema.methods.auth = function (secret) {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(secret, this.hash, (err, res) => {
+    bcrypt.compare(secret, this._hash, (err, res) => {
       if (err) reject(new Error('Failed to compare password'))
       resolve(res)
     })
