@@ -3,7 +3,7 @@ extends layout
 
 block content
   div(class='row')
-    div(class='col-4')
+    div(class='col-auto')
       div(class='list-group' id='list-tab' role='tablist')
         -
           const titles = ['Module 1: Overview on Materials Recycling',
@@ -17,51 +17,51 @@ block content
                         'Module 9: Design for Recycling',
                         'Module 10: Understanding Public Perception and Consumer Habits']
         for value, index in titles
-          a(class='list-group-item list-group-item-action' id='module-'+index+'-list' data-toggle='list' href='#module-'+index role='tab' style='font-size: 0.85rem;')= value
+          a(class='list-group-item list-group-item-action' id='module-'+index+'-list' data-toggle='list' href='#module-'+index role='tab' style='font-size: 0.85rem;') Module #{index+1}
 
     div(class='col')
       div(class='tab-content' id='nav-tabContent')
         //- Module 1
         div(class='tab-pane fade' id='module-0' role='tabpanel')
-          h3 Module 1 Content:
-            h4 Module 1 Outline
-            h4
-              b 1.a
-              |  A Brief Introduction to Composites
-            h4
-              b 1.b
-              |  “Waste” versus “Scrap”
-            h4
-              b 1.c
-              |  Recycling Trends
-            h4
-              b 1.d
-              |  Industry Perspective on Recyclings
-            h4
-              b 1.e
-              |  Basic Introduction to Current Composite Recycling in Industry
+          h3= titles[0]
+          h4: a(href='#') Module 1 Outline
+          h4
+            b 1.a 
+            a(href='#') A Brief Introduction to Composites
+          h4
+            b 1.b 
+            a(href='#') “Waste” versus “Scrap”
+          h4
+            b 1.c 
+            a(href='#') Recycling Trends
+          h4
+            b 1.d 
+            a(href='#') Industry Perspective on Recyclings
+          h4
+            b 1.e 
+            a(href='#') Basic Introduction to Current Composite Recycling in Industry
         //- Module 5
         div(class='tab-pane fade' id='module-4' role='tabpanel')
-          h3 Module 5 Content
-            h4 Module 5 Outline
+          h3= titles[4]
+            h4: a(href='#') Module 5 Outline
             h4
-              b 5.a
-              |  Six Sources of Manufacturing Scrap
+              b 5.a 
+              a(href='#') Six Sources of Manufacturing Scrap
             h4
-              b 5.b
-              |  Raw Material and Material Trim-Offs Scrap
+              b 5.b 
+              a(href='#') Raw Material and Material Trim-Offs Scrap
             h4
-              b 5.c
-              |  Part Trim-Offs Scrap
+              b 5.c 
+              a(href='#') Part Trim-Offs Scrap
             h4
-              b 5.d
-              |  Machining/Finishing Scrap
+              b 5.d 
+              a(href='#') Machining/Finishing Scrap
             h4
-              b 5.e
-              |  Reject Parts and End of Life Components as Scrap
+              b 5.e 
+              a(href='#') Reject Parts and End of Life Components as Scrap
             h4
-              b 5.f
-              |  Storing versus Landfilling versus Outsourcing Scrap
+              b 5.f 
+              a(href='#') Storing versus Landfilling versus Outsourcing Scrap
         //- Generate tabs for empty modules
         - const missing = [...titles.keys()].filter(function (i) { return ![0, 4].includes(i) })
         each i in missing
