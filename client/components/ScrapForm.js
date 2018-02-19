@@ -210,6 +210,10 @@ const glasses = [
     label: 'D-glass / Dielectric glass',
     value: ',reinforcement,fiber,glass,dielectric',
   },
+  {
+    label: 'Other',
+    value: ',reinforcement,fiber,glass,other',
+  },
 ]
 const aramids = [
   {
