@@ -21,12 +21,12 @@ class App extends Component {
       status: '',
       data: ScrapForm.defaultState,
     }
-    this.handleView = this.handleView.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
     this.handleSave = this.handleSave.bind(this)
   }
 
-  handleView(data) {
+  handleCreate(data) {
     this.setState({
       view: true,
       status: '',
@@ -34,7 +34,7 @@ class App extends Component {
     })
   }
 
-  handleEdit(data) {
+  handleCancel(data) {
     this.setState({
       view: false,
       status: ''
@@ -61,10 +61,10 @@ class App extends Component {
   render() {
     let body = null
     if (this.state.view) {
-      body = <ScrapView onEdit={this.handleEdit} onSave={this.handleSave}
+      body = <ScrapView onCancel={this.handleCancel} onSave={this.handleSave}
                         {...this.state.data} />
     } else {
-      body = <ScrapForm state={this.state.data} onView={this.handleView} />
+      body = <ScrapForm state={this.state.data} onCreate={this.handleCreate} />
     }
     const color = this.state.status == 'OK' ? 'success' : 'danger';
     return (

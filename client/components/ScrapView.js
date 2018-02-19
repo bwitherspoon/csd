@@ -5,14 +5,14 @@ import Remarkable from 'remarkable'
 class ScrapView extends Component {
   constructor(props) {
     super(props)
-    this.handleEdit = props.onEdit
+    this.handleCancel = props.onCancel
     this.handleSave = props.onSave
+    this.markdown = new Remarkable()
   }
   render() {
     const resin = this.props.resin ? this.props.resin.replace(/,/g, '/') : ''
     const reinforcement = this.props.reinforcement ? this.props.reinforcement.replace(/,/g, '/') : ''
-    const markdown = new Remarkable()
-    const notes = markdown.render(this.props.research_notes)
+    const notes = this.markdown.render(this.props.research_notes)
     return (
       <div className="p-5 m-4 border">
         <Row>
@@ -22,7 +22,7 @@ class ScrapView extends Component {
             <p><strong>Form: </strong>{this.props.form}</p>
             <p><strong>Origin Company: </strong>{this.props.origin_company}</p>
             <p><strong>Original Material: </strong>{this.props.original_material}</p>
-            <p><strong>Manufacturing Method: </strong>{this.props.manufacturing_method}</p>
+            <p><strong>Manufacturing Method: </strong><a href="#">{this.props.manufacturing_method}</a></p>
             <p><strong>Current Location: </strong>{this.props.current_location}</p>
             <p><strong>Quantity: </strong>{this.props.quantity} kg</p>
             <p><strong>Research Notes:</strong></p>
@@ -35,8 +35,8 @@ class ScrapView extends Component {
         <Row>
           <Col>
             <Button outline color="secondary" size="lg" block
-                    onClick={this.handleEdit}>
-              Edit
+                    onClick={this.handleCancel}>
+              Cancel
             </Button>
           </Col>
           <Col>

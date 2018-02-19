@@ -350,7 +350,7 @@ class ScrapForm extends Component {
       this.state = ScrapForm.defaultState
     }
 
-    this.handleView = props.onView
+    this.handleCreate = props.onCreate
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -393,7 +393,7 @@ class ScrapForm extends Component {
       research_notes: event.target.research_notes.value,
     }
     this.setState(state)
-    this.handleView(state)
+    this.handleCreate(state)
     event.preventDefault()
   }
 
