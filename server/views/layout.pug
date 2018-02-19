@@ -31,7 +31,7 @@ html(lang='en')
             li(class='nav-item')
               a(class='nav-link' id='nav-link-about' href='/about' class={active: view === 'about'}) About
             li(class='nav-item')
-              a(class='nav-link' id='nav-link-learn' href='/learn' class={active: view === 'learn'}) Learn
+              a(class='nav-link' id='nav-link-learn' href='/modules' class={active: view === 'learn'}) Learn
             li(class='nav-item')
               a(class='nav-link' id='nav-link-search' href='/search' class={active: view === 'search'}) Search
             li(class='nav-item')
@@ -42,7 +42,7 @@ html(lang='en')
               i(class='fa fa-cog')
             button(type='button' class='btn btn-primary' onclick='location.pathname=\'/\'')
               i(class='fa fa-folder')
-            button(type='button' class='btn btn-primary' onclick=authenticated ? 'location.pathname=\'/user/logout\'' : 'location.pathname=\'/login\'')
+            button(type='button' class='btn btn-primary' onclick=authenticated ? 'location.pathname=\'/logout\'' : 'location.pathname=\'/login\'')
               i(class='fa' class=authenticated ? 'fa-user-times' : 'fa-user')
 
       main(role='main')

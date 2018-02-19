@@ -1,15 +1,15 @@
-// Composite scrap database application
-const assert = require('assert')
 const crypto = require('crypto')
 const path = require('path')
 const express = require('express')
 const session = require('express-session')
 const mongoose = require('mongoose')
 
-const scrap = require('./routes/scrap')
+const router = require('./routes')
 
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/composites'
 const app = express()
 
+// Middleware
 app.set('views', __dirname + '/views')
 app.set('view engine', 'pug')
 
@@ -21,54 +21,7 @@ app.use(session({
   saveUninitialized: false
 }))
 
-// Router-level middleware
-app.use('/scrap', scrap)
-
-// Application-level middleware
-app.get('/', (req, res) => {
-  res.render('index', {
-    view: 'home',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-app.get('/about', (req, res) => {
-  res.render('about', {
-    view: 'about',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-app.get('/learn', (req, res) =>  {
-  res.redirect('/learn/modules')
-})
-app.get('/learn/modules', (req, res) => {
-  res.render('modules', {
-    view: 'learn',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-app.get('/learn/overview', (req, res) => {
-  res.render('overview', {
-    view: 'learn',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-app.get('/contact', (req, res) => {
-  res.render('contact', {
-    view: 'contact',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-app.get('/login', (req, res) => {
-  res.status(404).end()
-})
-app.get('/search', (req, res) => {
-  res.render('search', {
-    view: 'search',
-  })
-})
-app.get('/admin', (req, res) => {
-  res.render('admin')
-})
+app.use('/', router)
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -86,9 +39,8 @@ function handler(opt, err) {
     process.exit()
 }
 
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/composites'
-).then(
+// Serve
+mongoose.connect(uri).then(
   () => {
     process.on('exit', handler.bind(null, {
       cleanup: true
@@ -98,5 +50,8 @@ mongoose.connect(
     }))
     app.listen(process.env.PORT || 8080)
   },
-  err => console.error(err.stack())
+  err => {
+    console.error(err.stack())
+    process.exit(1)
+  }
 )

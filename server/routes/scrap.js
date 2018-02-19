@@ -1,20 +1,22 @@
 const express = require('express')
-const router = express.Router()
-const json = express.json()
 
 const Scrap = require('../models/scrap')
 
-router.get('/', (req, res) => {
-  res.status(200).end()
-})
+const router = express.Router()
+const json = express.json()
 
 router.post('/', json, (req, res) => {
+  if (!req.body) res.status(400).send('Bad Request')
   Scrap.create(req.body, (err, doc) => {
     if (err)
-      res.status(400).end()
+      res.status(400).send('Bad Request')
     else
-      res.status(200).end()
+      res.status(200).send('OK')
   })
+})
+
+router.all('/', (req, res) => {
+  res.status(400).send('Bad Request')
 })
 
 module.exports = router
