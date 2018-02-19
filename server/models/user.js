@@ -6,26 +6,50 @@ const UserSchema = mongoose.Schema({
     type: String,
     lowercase: true,
     trim: true,
+    index: true,
     unique: true,
     required: true,
   },
-  password: {
+  _hash: {
     type: String,
     required: true,
   },
-  folder: [mongoose.Schema.Types.ObjectId],
+  data: [mongoose.Schema.Types.ObjectId],
 })
 
-UserSchema.methods.setPassword = function (secret, handler) {
-  bcrypt.hash(secret, 14, (error, hash) => {
-    if (handler && error)
-      return handler(error)
-    this.password = hash
+UserSchema.post('save', function (err, doc, next) {
+  if (err.name === 'MongoError' && err.code === 11000) {
+    next(new Error('User already exists'))
+  } else {
+    next(err)
+  }
+})
+
+UserSchema.post('update', function (err, doc, next) {
+  if (err.name === 'MongoError' && err.code === 11000) {
+    next(new Error('User already exists'))
+  } else {
+    next(err)
+  }
+})
+
+UserSchema.methods.hash = function (secret) {
+  return new Promise((resolve, reject) => {
+    bcrypt.hash(secret, 12, (err, res) => {
+      if (err) reject(new Error('Failed to hash password'))
+      this._hash = res
+      resolve(this)
+    })
   })
 }
 
-UserSchema.methods.checkPassword = function (secret, handler) {
-  bcrypt.compare(secret, this.password, handler)
+UserSchema.methods.auth = function (secret) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(secret, this.hash, (err, res) => {
+      if (err) reject(new Error('Failed to compare password'))
+      resolve(res)
+    })
+  })
 }
 
 module.exports = mongoose.model('User', UserSchema)

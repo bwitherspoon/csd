@@ -87,7 +87,7 @@ function handler(opt, err) {
 }
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/composite-recycling'
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/composites'
 ).then(
   () => {
     process.on('exit', handler.bind(null, {
