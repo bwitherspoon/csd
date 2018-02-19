@@ -53,7 +53,9 @@ class App extends Component {
     .then(res => {
       this.setState({ status: res.statusText })
     })
-    .catch(err => console.error('Error:', err))
+    .catch(err => {
+      this.setState({ status: err.message })
+    })
   }
 
   render() {
