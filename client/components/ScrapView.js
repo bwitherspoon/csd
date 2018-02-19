@@ -26,7 +26,7 @@ class ScrapView extends Component {
             <p><strong>Current Location: </strong>{this.props.current_location}</p>
             <p><strong>Quantity: </strong>{this.props.quantity} kg</p>
             <p><strong>Research Notes:</strong></p>
-            <div className="m-4 notes" dangerouslySetInnerHTML={{ __html: notes }}/>
+            <div className="m-4" dangerouslySetInnerHTML={{ __html: notes }}/>
           </Col>
           <Col sm="auto">
             <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Scrap image" />
