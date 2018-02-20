@@ -7,9 +7,10 @@
     "node": "6.11.4"
   },
   "scripts": {
-    "postinstall": "webpack",
+    "build": "weppack",
     "start": "node server/server.js",
-    "nodemon": "nodemon",
+    "deploy": "git push heroku master",
+    "heroku-postbuild": "npm run build && npm prune --production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
