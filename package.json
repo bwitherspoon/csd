@@ -7,7 +7,7 @@
     "node": "6.11.4"
   },
   "scripts": {
-    "build": "weppack",
+    "build": "webpack",
     "start": "node server/server.js",
     "deploy": "git push heroku master",
     "heroku-postbuild": "npm run build && npm prune --production",
