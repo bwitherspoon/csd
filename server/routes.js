@@ -25,7 +25,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', parser, (req, res) => {
-  const reject = () => res.status(400).res.render('login', {
+  const reject = () => res.status(400).render('login', {
     error: 'Email and/or password incorrect'
   })
   const error = err => {
