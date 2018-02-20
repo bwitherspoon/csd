@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Alert } from 'reactstrap'
+import ScrapDocument from './components/ScrapDocument'
 import ScrapForm from './components/ScrapForm'
-import ScrapView from './components/ScrapView'
 
 class Header extends Component {
   render() {
@@ -19,11 +19,8 @@ class App extends Component {
     this.state = {
       view: false,
       status: '',
-      data: ScrapForm.defaultState,
+      data: {...ScrapDocument.defaults},
     }
-    this.handleCreate = this.handleCreate.bind(this)
-    this.handleCancel = this.handleCancel.bind(this)
-    this.handleSave = this.handleSave.bind(this)
   }
 
   handleCreate(data) {
@@ -34,14 +31,14 @@ class App extends Component {
     })
   }
 
-  handleCancel(data) {
+  handleCancel() {
     this.setState({
       view: false,
       status: ''
     })
   }
 
-  handleSave(data) {
+  handleSave() {
     fetch('/scrap', {
       method: 'POST',
       body: JSON.stringify(this.state.data),
@@ -62,18 +59,22 @@ class App extends Component {
   render() {
     let body = null
     if (this.state.view) {
-      body = <ScrapView onCancel={this.handleCancel} onSave={this.handleSave}
-                        {...this.state.data} />
+      body = <ScrapDocument data={this.state.data}
+                            onCancel={this.handleCancel.bind(this)}
+                            onSave={this.handleSave.bind(this)} />
     } else {
-      body = <ScrapForm state={this.state.data} onCreate={this.handleCreate} />
+      body = <ScrapForm data={this.state.data}
+                        onCreate={this.handleCreate.bind(this)} />
     }
     const color = this.state.status == 'OK' ? 'success' : 'danger';
     return (
       <Container>
         <Header />
-        <Alert className="m-4" color={color} isOpen={this.state.status != ''}>
-          {this.state.status}
-        </Alert>
+        {this.state.status != '' &&
+          <Alert className="m-4" color={color} isOpen={this.state.status != ''}>
+            {this.state.status}
+          </Alert>
+        }
         {body}
       </Container>
     )

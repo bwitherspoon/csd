@@ -344,10 +344,10 @@ class ScrapForm extends Component {
   constructor(props) {
     super(props)
 
-    if (props.state) {
-      this.state = props.state
+    if (props.data) {
+      this.state = {...props.data}
     } else {
-      this.state = ScrapForm.defaultState
+      this.state = {...ScrapForm.defaults}
     }
 
     this.handleCreate = props.onCreate
@@ -365,48 +365,49 @@ class ScrapForm extends Component {
   }
 
   handleResinToggle() {
-    this.setState({resin: (/^,.+/.test(this.state.resin) ? '' : ',resin,')})
+    const value = /^,.+/.test(this.state.resin) ? undefined : ',resin,'
+    this.setState({ resin: value })
   }
 
   handleResin(value) {
-    this.setState({resin: value})
+    this.setState({ resin: value })
   }
 
   handleReinforcementToggle() {
-    this.setState({reinforcement: (/^,.+/.test(this.state.reinforcement) ? '' : ',reinforcement,')})
+    const value = /^,.+/.test(this.state.reinforcement) ? undefined : ',reinforcement,'
+    this.setState({ reinforcement: value })
   }
 
   handleReinforcement(value) {
-    this.setState({reinforcement: value})
+    this.setState({ reinforcement: value })
   }
 
   handleSubmit(event) {
-    const state = {
+    const data = {
       resin: this.state.resin,
       reinforcement: this.state.reinforcement,
-      form: event.target.form.value,
-      origin_company: event.target.origin_company.value,
-      original_material: event.target.original_material.value,
-      manufacturing_method: event.target.manufacturing_method.value,
-      current_location: event.target.current_location.value,
-      quantity: event.target.quantity.value,
-      research_notes: event.target.research_notes.value,
     }
-    this.setState(state)
-    this.handleCreate(state)
+    for (const name in ScrapForm.defaults) {
+      if (['resin', 'reinforcement'].includes(name))
+        continue
+      if (event.target[name] && event.target[name].value)
+        data[name] = event.target[name].value
+    }
+    this.setState(data)
+    this.handleCreate(data)
     event.preventDefault()
   }
 
   handleReset(event) {
-    this.setState(ScrapForm.defaultState)
+    this.setState(ScrapForm.defaults)
     event.preventDefault()
   }
 
   isDisabled() {
     return (
-      this.state.resin == '' && this.state.reinforcement == '' ||
-      this.state.resin.endsWith(',') ||
-      this.state.reinforcement.endsWith(',')
+      !this.state.resin && !this.state.reinforcement ||
+      this.state.resin && this.state.resin.endsWith(',') ||
+      this.state.reinforcement && this.state.reinforcement.endsWith(',')
     )
   }
 
@@ -531,6 +532,7 @@ class ScrapForm extends Component {
               <Label for="form">Form</Label>
               <Input type="select" name="form" id="form"
                      disabled={this.isDisabled()}>
+                <option value="">None</option>
                 {forms.map(form =>
                   <option key={form.value} value={form.value}>
                     {form.label + (form.short ? ' (' + form.short + ')' : '')}
@@ -551,7 +553,7 @@ class ScrapForm extends Component {
         <FormGroup row>
           <Col>
             <Button outline type="reset" color="secondary" size="lg" block
-                    disabled={this.state.resin == '' && this.state.reinforcement == ''}>
+                    disabled={!this.state.resin && !this.state.reinforcement}>
               Reset
             </Button>
           </Col>
@@ -567,16 +569,16 @@ class ScrapForm extends Component {
   }
 }
 
-ScrapForm.defaultState = {
-  resin: '',
-  reinforcement: '',
-  form: '',
-  origin_company: '',
-  original_material: '',
-  manufacturing_method: '',
-  current_location: '',
-  quantity: 0,
-  research_notes: '',
+ScrapForm.defaults = {
+  resin: undefined,
+  reinforcement: undefined,
+  form: undefined,
+  origin_company: undefined,
+  original_material: undefined,
+  manufacturing_method: undefined,
+  current_location: undefined,
+  quantity: undefined,
+  research_notes: undefined,
 }
 
 export default ScrapForm
