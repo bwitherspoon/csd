@@ -5,7 +5,7 @@ const ScrapSchema = mongoose.Schema({
   reinforcement: String,
   form: String,
   origin_company: String,
-  original_company: String,
+  original_material: String,
   manufacturing_method: String,
   current_location: String,
   quantity: Number,
