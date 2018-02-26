@@ -5,10 +5,38 @@ import Remarkable from 'remarkable'
 class ScrapDocument extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      resin: undefined,
+      reinforcement: undefined,
+      form: undefined,
+    }
     this.handleCancel = props.onCancel
     this.handleSave = props.onSave
     this.markdown = new Remarkable()
   }
+
+  componentDidMount() {
+    const paths = {
+      resin: this.props.data.resin,
+      reinforcement: this.props.data.reinforcement,
+      form: this.props.data.form,
+    }
+    for (const name in paths) {
+      fetch('/path/' + paths[name])
+        .then(res => res.json())
+        .then(
+          res => {
+            if (res.length != 0) {
+              const state = {}
+              state[name] = res[0].label + (res[0].short ? ' (' + res[0].short + ')' : '')
+              this.setState(state)
+            }
+          },
+          err => console.error(err)
+        )
+    }
+  }
+
   render() {
     const notes = this.markdown.render(this.props.data.research_notes)
     return (
@@ -17,15 +45,15 @@ class ScrapDocument extends Component {
           <Col>
             <p>
               <strong>Resin: </strong>
-              {this.props.data.resin}
+              {this.state.resin}
             </p>
             <p>
               <strong>Reinforcement: </strong>
-              {this.props.data.reinforcement}
+              {this.state.reinforcement}
             </p>
             <p>
               <strong>Form: </strong>
-              {this.props.data.form}
+              {this.state.form}
             </p>
             <p>
               <strong>Origin Company: </strong>
