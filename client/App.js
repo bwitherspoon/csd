@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Alert } from 'reactstrap'
 import PageHeader from './components/PageHeader'
+import HomePage from './components/HomePage'
 import CreatePage from './components/CreatePage'
 
 class App extends Component {
@@ -18,6 +19,9 @@ class App extends Component {
   render() {
     let page
     switch (this.state.page) {
+      case 'home':
+        page = <HomePage />
+        break
       case 'create':
         page = <CreatePage />
         break
