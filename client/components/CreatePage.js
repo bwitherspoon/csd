@@ -60,7 +60,7 @@ class CreatePage extends Component {
     })
     .then(res => {
       this.setState({
-        preview: false,
+        preview: !res.ok,
         status: res.statusText
       })
     })
