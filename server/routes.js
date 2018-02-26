@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const User = require('./models/user')
 
 const authenticate = require('./authenticate')
+const path = require('./routes/path')
 const scrap = require('./routes/scrap')
 
 const router = express.Router()
@@ -11,6 +12,7 @@ const parser = bodyParser.urlencoded({
   extended: false
 })
 
+router.use('/path', path)
 router.use('/scrap', authenticate, scrap)
 
 router.get('/', (req, res) => {
