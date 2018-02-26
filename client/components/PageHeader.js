@@ -8,15 +8,10 @@ import UserIcon from '@fortawesome/fontawesome-free-solid/faUser'
 class PageHeader extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      page: props.page
-    }
-    this.onNavigate = props.onNavigate
   }
 
-  handleClick(page, event) {
-    this.setState({ page: page })
-    this.onNavigate(page)
+  handleNavigate(page, event) {
+    this.props.onNavigate(page)
     event.preventDefault()
   }
 
@@ -32,8 +27,8 @@ class PageHeader extends Component {
             {pages.map(page =>
               <NavItem key={page}>
                 <NavLink href="#"
-                         onClick={this.handleClick.bind(this, page.toLowerCase())}
-                         active={this.state.page === page.toLowerCase()}>
+                         onClick={this.handleNavigate.bind(this, page.toLowerCase())}
+                         active={this.props.page === page.toLowerCase()}>
                   {page}
                 </NavLink>
               </NavItem>
@@ -41,10 +36,12 @@ class PageHeader extends Component {
           </Nav>
           {/* Buttons */}
           <ButtonGroup className="p-2 ml-auto">
-            <Button color="primary">
+            <Button color="primary" active={this.props.page === 'create'}
+                    onClick={() => this.props.onNavigate('create')}>
               <FontAwesomeIcon icon={CogIcon} />
             </Button>
-            <Button color="primary">
+            <Button color="primary" active={this.props.page === 'folder'}
+                    onClick={() => this.props.onNavigate('folder')}>
               <FontAwesomeIcon icon={FolderIcon} />
             </Button>
             <Button color="primary">

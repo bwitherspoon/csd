@@ -12,14 +12,21 @@ class App extends Component {
   }
 
   handleNavigate(page) {
-    // TODO
+    this.setState({ page: page })
   }
 
   render() {
+    let page
+    switch (this.state.page) {
+      case 'create':
+        page = <CreatePage />
+        break
+    }
     return (
       <Container>
-        <PageHeader onNavigate={this.handleNavigate.bind(this)} />
-        <CreatePage />
+        <PageHeader page={this.state.page}
+                    onNavigate={this.handleNavigate.bind(this)} />
+        {page}
       </Container>
     )
   }
