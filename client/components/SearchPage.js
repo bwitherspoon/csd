@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Button } from 'reactstrap'
+import ScrapDocument from './ScrapDocument'
 import PathSelect from './PathSelect'
 
 class SearchPage extends Component {
@@ -9,6 +10,7 @@ class SearchPage extends Component {
       resin: undefined,
       reinforcement: undefined,
       form: undefined,
+      result: undefined,
     }
     this.handleReset = this.handleReset.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
@@ -37,9 +39,17 @@ class SearchPage extends Component {
     })
       .then(res => res.json())
       .then(
-        res => console.log(res),
+        res => this.setState({ result: res }),
         err => console.error(err)
       )
+  }
+
+  handleCancel() {
+    // TODO
+  }
+
+  handleSave() {
+    // TODO
   }
 
   handleResin(resin) {
@@ -55,13 +65,18 @@ class SearchPage extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <PathSelect onResin={this.handleResin}
-                    onReinforcement={this.handleReinforcement}
-                    onForm={this.handleForm}
-                    {...this.state} />
-        {(this.state.resin || this.state.reinforcement || this.state.form) &&
+    let content
+    if (this.state.result)
+      content = this.state.result.map((doc, idx) =>
+        <ScrapDocument key={idx} {...doc} />
+      )
+    else
+      content =
+        <div>
+          <PathSelect onResin={this.handleResin}
+                      onReinforcement={this.handleReinforcement}
+                      onForm={this.handleForm}
+                      {...this.state} />
           <Row>
             <Col>
               <Button className="m-2" outline size="lg" block
@@ -76,9 +91,8 @@ class SearchPage extends Component {
               </Button>
             </Col>
           </Row>
-        }
-      </div>
-    )
+        </div>
+    return content
   }
 }
 
