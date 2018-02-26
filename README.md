@@ -22,7 +22,7 @@ an initial username and password with the provided bootstrap script:
 ```shell
 export MONGODB_URI=mongodb://localhost:27017/csd
 export CSD_USERNAME=admin
-CSD_PASSWORD=password node server/bootstrap.js
+CSD_PASSWORD=password ./scripts/adduser.js
 ```
 
 Additional project dependencies can be installed locally with the [Node.js](https://nodejs.org) package manager [npm](https://www.npmjs.com):
