@@ -48,6 +48,12 @@ class CreateForm extends Component {
                 <InputGroupAddon addonType="append">kg</InputGroupAddon>
               </InputGroup>
             </FormGroup>
+            <FormGroup>
+              <Label for="image">Images</Label>
+              <Input type="file" name="image" id="image" accept="image/*" multiple
+                     defaultValue={this.props.image}
+                     disabled={this.props.disabled} />
+            </FormGroup>
           </Col>
           <Col>
             <FormGroup>
