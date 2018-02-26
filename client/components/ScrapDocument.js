@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import Remarkable from 'remarkable'
 
 class ScrapDocument extends Component {
@@ -10,8 +10,6 @@ class ScrapDocument extends Component {
       reinforcement: undefined,
       form: undefined,
     }
-    this.handleCancel = props.onCancel
-    this.handleSave = props.onSave
     this.markdown = new Remarkable()
   }
 
@@ -87,20 +85,6 @@ class ScrapDocument extends Component {
           </Col>
           <Col sm="auto">
             <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Scrap image" />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Button outline color="secondary" size="lg" block
-                    onClick={this.handleCancel}>
-              Cancel
-            </Button>
-          </Col>
-          <Col>
-            <Button color="primary" size="lg" block
-                    onClick={this.handleSave}>
-              Save
-            </Button>
           </Col>
         </Row>
       </div>

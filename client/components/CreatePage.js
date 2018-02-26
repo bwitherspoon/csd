@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert } from 'reactstrap'
+import { Row, Col, Alert, Button } from 'reactstrap'
 import ScrapDocument from './ScrapDocument'
 import PathSelect from './PathSelect'
 import CreateForm from './CreateForm'
@@ -91,12 +91,29 @@ class CreatePage extends Component {
   render() {
     let body
     if (this.state.preview) {
-      body = <ScrapDocument onCancel={this.handleCancel}
-                            onSave={this.handleSave}
-                            resin={this.state.resin}
-                            reinforcement={this.state.reinforcement}
-                            form={this.state.form}
-                            {...this.state.data} />
+      body =
+        <div>
+          <ScrapDocument onCancel={this.handleCancel}
+                         onSave={this.handleSave}
+                         resin={this.state.resin}
+                         reinforcement={this.state.reinforcement}
+                         form={this.state.form}
+                         {...this.state.data} />
+          <Row>
+            <Col>
+              <Button outline color="secondary" size="lg" block
+                      onClick={this.handleCancel}>
+                Cancel
+              </Button>
+            </Col>
+            <Col>
+              <Button color="primary" size="lg" block
+                      onClick={this.handleSave}>
+                Save
+              </Button>
+            </Col>
+          </Row>
+        </div>
     } else {
       body =
         <div>
