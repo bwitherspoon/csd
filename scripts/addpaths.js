@@ -55,6 +55,14 @@ const paths = [
     short: 'PVC',
     value: ',resin,thermoplastic,pvc',
   },
+  {
+    label: 'Any',
+    value: ',resin,thermoplastic,,',
+  },
+  {
+    label: 'Other',
+    value: ',resin,thermoplastic,other',
+  },
   // Thermosets
   {
     label: 'Epoxy',
@@ -90,6 +98,14 @@ const paths = [
     label: 'Vulcanized rubber',
     value: ',resin,thermoset,vulcanizedrubber',
   },
+  {
+    label: 'Any',
+    value: ',resin,thermoset,,',
+  },
+  {
+    label: 'Other',
+    value: ',resin,thermoset,other',
+  },
   // Polyamides
   {
     label: 'Nylon',
@@ -111,6 +127,14 @@ const paths = [
     short: 'PA6,6',
     value: ',resin,thermoplastic,polyamide,pa66',
   },
+  {
+    label: 'Any',
+    value: ',resin,thermoplastic,polyamide,,',
+  },
+  {
+    label: 'Other',
+    value: ',resin,thermoplastic,polyamide,other',
+  },
   // Polyethylenes
   {
     label: 'High density polyethylene',
@@ -131,6 +155,14 @@ const paths = [
     label: 'Ultra high molecular weight polyethylene',
     short: 'UHMWPE',
     value: ',resin,thermoplastic,polyethylene,uhmwpe',
+  },
+  {
+    label: 'Any',
+    value: ',resin,thermoplastic,polyethylene,,',
+  },
+  {
+    label: 'Other',
+    value: ',resin,thermoplastic,polyethylene,other',
   },
   // Fibers
   {
@@ -159,6 +191,14 @@ const paths = [
     label: 'Natural',
     value: ',reinforcement,fiber,natural,',
   },
+  {
+    label: 'Any',
+    value: ',reinforcement,fiber,,',
+  },
+  {
+    label: 'Other',
+    value: ',reinforcement,fiber,other',
+  },
   // Graphites
   {
     label: 'Low modulus',
@@ -179,6 +219,10 @@ const paths = [
   {
     label: 'Ultra modulus',
     value: ',reinforcement,fiber,graphite,ultrahigh',
+  },
+  {
+    label: 'Any',
+    value: ',reinforcement,fiber,graphite,,',
   },
   {
     label: 'Other',
@@ -206,6 +250,10 @@ const paths = [
     value: ',reinforcement,fiber,glass,dielectric',
   },
   {
+    label: 'Any',
+    value: ',reinforcement,fiber,glass,,',
+  },
+  {
     label: 'Other',
     value: ',reinforcement,fiber,glass,other',
   },
@@ -217,6 +265,10 @@ const paths = [
   {
     label: 'Twaron',
     value: ',reinforcement,fiber,aramid,twaron',
+  },
+  {
+    label: 'Any',
+    value: ',reinforcement,fiber,aramid,,',
   },
   {
     label: 'Other',
@@ -244,6 +296,10 @@ const paths = [
     value: ',reinforcement,fiber,natural,kenaf',
   },
   {
+    label: 'Any',
+    value: ',reinforcement,fiber,natural,,',
+  },
+  {
     label: 'Other',
     value: ',reinforcement,fiber,natural,other',
   },
@@ -264,6 +320,14 @@ const paths = [
     label: 'Carbon nanotubes',
     short: 'CNT',
     value: ',reinforcement,particulate,cnt',
+  },
+  {
+    label: 'Any',
+    value: ',reinforcement,particulate,,',
+  },
+  {
+    label: 'Other',
+    value: ',reinforcement,particulate,other',
   },
   // Forms
   {
@@ -304,6 +368,14 @@ const paths = [
    label: 'Prepreg',
    value: ',form,prepreg',
   },
+  {
+    label: 'Any',
+    value: ',form,,'
+  },
+  {
+    label: 'Other',
+    value: ',form,other'
+  }
 ]
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/composites'
