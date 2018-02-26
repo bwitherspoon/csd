@@ -77,6 +77,10 @@ class ScrapDocument extends Component {
               {this.props.quantity} kg
             </p>
             <p>
+              <strong>References: </strong>
+              {this.props.references}
+            </p>
+            <p>
               <strong>Research Notes:</strong>
             </p>
             <div className="m-4" dangerouslySetInnerHTML={{ __html: notes }}/>
