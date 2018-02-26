@@ -314,6 +314,9 @@ const error = err => {
 }
 
 mongoose.connect(uri).then(
-  () => Path.create(paths).then(() => process.exit()).catch(error),
+  () => {
+    Path.collection.remove()
+    Path.create(paths).then(() => process.exit()).catch(error)
+  },
   error
 )
