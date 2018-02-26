@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Alert } from 'reactstrap'
+import Header from './components/Header'
 import ScrapDocument from './components/ScrapDocument'
 import ScrapForm from './components/ScrapForm'
-
-class Header extends Component {
-  render() {
-    return (
-      <header className="p-2">
-        <img width='64px' height='64px' src='/images/logo.svg' alt='Composites Recycling' />
-      </header>
-    )
-  }
-}
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +47,10 @@ class App extends Component {
     })
   }
 
+  handleNavigate(page) {
+    // TODO
+  }
+
   render() {
     let body = null
     if (this.state.view) {
@@ -66,15 +61,19 @@ class App extends Component {
       body = <ScrapForm data={this.state.data}
                         onCreate={this.handleCreate.bind(this)} />
     }
-    const color = this.state.status == 'OK' ? 'success' : 'danger';
+    let alert = null
+    if (this.state.status) {
+      const color = this.state.status == 'OK' ? 'success' : 'danger';
+      alert = (
+        <Alert className="m-4" color={color} isOpen={this.state.status != ''}>
+          {this.state.status}
+        </Alert>
+      )
+    }
     return (
       <Container>
-        <Header />
-        {this.state.status != '' &&
-          <Alert className="m-4" color={color} isOpen={this.state.status != ''}>
-            {this.state.status}
-          </Alert>
-        }
+        <Header onNavigate={this.handleNavigate.bind(this)} />
+        {alert}
         {body}
       </Container>
     )
