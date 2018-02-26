@@ -8,6 +8,7 @@ class CreatePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      preview: false,
       status: '',
       resin: undefined,
       reinforcement: undefined,
@@ -25,6 +26,7 @@ class CreatePage extends Component {
 
   handleCreate(data) {
     this.setState({
+      preview: true,
       status: '',
       data: data
     })
@@ -36,7 +38,7 @@ class CreatePage extends Component {
       resin: undefined,
       reinforcement: undefined,
       form: undefined,
-      data: undefined,
+      data: {...CreateForm.defaults},
     })
   }
 
@@ -57,7 +59,10 @@ class CreatePage extends Component {
       redirect: 'error',
     })
     .then(res => {
-      this.setState({ status: res.statusText })
+      this.setState({
+        preview: false,
+        status: res.statusText
+      })
     })
     .catch(err => {
       this.setState({ status: err.message })
@@ -65,7 +70,10 @@ class CreatePage extends Component {
   }
 
   handleCancel() {
-    this.setState({ data: undefined })
+    this.setState({
+      preview: false,
+      status: '',
+    })
   }
 
   handleResin(resin) {
@@ -82,7 +90,7 @@ class CreatePage extends Component {
 
   render() {
     let body
-    if (this.state.data) {
+    if (this.state.preview) {
       body = <ScrapDocument onCancel={this.handleCancel}
                             onSave={this.handleSave}
                             resin={this.state.resin}
