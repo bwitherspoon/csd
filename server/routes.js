@@ -14,7 +14,7 @@ const parser = bodyParser.urlencoded({
 router.use('/scrap', authenticate, scrap)
 
 router.get('/', (req, res) => {
-  res.render('index', {
+  res.render('home', {
     view: 'home',
     authenticated: Boolean(req.session) && Boolean(req.session.user)
   })
