@@ -31,9 +31,6 @@ class PathSelect extends Component {
     super(props)
 
     this.state = {
-      resin: props.resin,
-      reinforcement: props.reinforcement,
-      form: props.form,
       thermoplastics: [],
       thermosets: [],
       polyamides: [],
@@ -48,73 +45,53 @@ class PathSelect extends Component {
     }
 
     this.handleResinToggle = this.handleResinToggle.bind(this)
-    this.handleResin = this.handleResin.bind(this)
 
     this.handleReinforcementToggle = this.handleReinforcementToggle.bind(this)
-    this.handleReinforcement = this.handleReinforcement.bind(this)
 
     this.handleFormToggle = this.handleFormToggle.bind(this)
-    this.handleForm = this.handleForm.bind(this)
   }
 
   componentDidMount() {
-    fetch('/path/resin,thermoplastic,')
-      .then(res => res.json())
-      .then(
-        res => this.setState({ thermoplastics: res }),
-        err => console.error(err)
-      )
-    fetch('/path/resin,thermoset,')
-      .then(res => res.json())
-      .then(
-        res => this.setState({ thermosets: res }),
-        err => console.error(err)
-      )
-    fetch('/path/reinforcement,fiber,')
-      .then(res => res.json())
-      .then(
-        res => this.setState({ fibers: res }),
-        err => console.error(err)
-      )
-    fetch('/path/reinforcement,particulate,')
-      .then(res => res.json())
-      .then(
-        res => this.setState({ particulates: res }),
-        err => console.error(err)
-      )
-    fetch('/path/form,')
-      .then(res => res.json())
-      .then(
-        res => this.setState({ forms: res }),
-        err => console.error(err)
-      )
+    const options = {
+      thermoplastics: 'resin,thermoplastic,',
+      thermosets: 'resin,thermoset,',
+      polyamides: 'resin,thermoplastic,polyamide,',
+      polyethylenes: 'resin,thermoplastic,polyethylene,',
+      fibers: 'reinforcement,fiber,',
+      particulates: 'reinforcement,particulate,',
+      graphites: 'reinforcement,fiber,graphite,',
+      glasses: 'reinforcement,fiber,glass,',
+      aramids: 'reinforcement,fiber,aramid,',
+      naturals: 'reinforcement,fiber,natural,',
+      forms: 'form,',
+    }
+    for (const name in options) {
+      fetch('/path/' + options[name])
+        .then(res => res.json())
+        .then(
+          res => {
+            const state = {}
+            state[name] = res
+            this.setState(state)
+          },
+          err => console.error(err)
+        )
+    }
   }
 
   handleResinToggle() {
-    const value = /^,.+/.test(this.state.resin) ? undefined : ',resin,'
-    this.setState({ resin: value })
-  }
-
-  handleResin(value) {
-    this.setState({ resin: value })
+    const value = /^,.+/.test(this.props.resin) ? undefined : ',resin,'
+    this.props.onResin(value)
   }
 
   handleReinforcementToggle() {
-    const value = /^,.+/.test(this.state.reinforcement) ? undefined : ',reinforcement,'
-    this.setState({ reinforcement: value })
-  }
-
-  handleReinforcement(value) {
-    this.setState({ reinforcement: value })
+    const value = /^,.+/.test(this.props.reinforcement) ? undefined : ',reinforcement,'
+    this.props.onReinforcement(value)
   }
 
   handleFormToggle() {
-    const value = /^,.+/.test(this.state.form) ? undefined : ',form,'
-    this.setState({ form: value })
-  }
-
-  handleForm(value) {
-    this.setState({ form: value })
+    const value = /^,.+/.test(this.props.form) ? undefined : ',form,'
+    this.props.onForm(value)
   }
 
   render() {
@@ -123,30 +100,34 @@ class PathSelect extends Component {
         <Col>
           <Button className="m-2" color="primary" size="lg" block
                   onClick={this.handleResinToggle}
-                  active={/^,resin,?/.test(this.state.resin)}>
+                  active={/^,resin,?/.test(this.props.resin)}>
             Resin
           </Button>
-          {/^,resin,($|thermoplastic,)/.test(this.state.resin) &&
-            <PathList state={this.state.resin} items={this.state.thermoplastics}
-                      onClick={this.handleResin}>
+          {/^,resin,($|thermoplastic,)/.test(this.props.resin) &&
+            <PathList state={this.props.resin}
+                      items={this.state.thermoplastics}
+                      onClick={this.props.onResin}>
               Thermoplastic
             </PathList>
           }
-          {/^,resin,($|thermoset,)/.test(this.state.resin) &&
-            <PathList state={this.state.resin} items={this.state.thermosets}
-                      onClick={this.handleResin}>
+          {/^,resin,($|thermoset,)/.test(this.props.resin) &&
+            <PathList state={this.props.resin}
+                      items={this.state.thermosets}
+                      onClick={this.props.onResin}>
               Thermoset
             </PathList>
           }
-          {/^,resin,thermoplastic,polyamide,/.test(this.state.resin) &&
-            <PathList state={this.state.resin} items={this.state.polyamides}
-                      onClick={this.handleResin}>
+          {/^,resin,thermoplastic,polyamide,/.test(this.props.resin) &&
+            <PathList state={this.props.resin}
+                      items={this.state.polyamides}
+                      onClick={this.props.onResin}>
               Polyamide
             </PathList>
           }
-          {/^,resin,thermoplastic,polyethylene,/.test(this.state.resin) &&
-            <PathList state={this.state.resin} items={this.state.polyethylenes}
-                      onClick={this.handleResin}>
+          {/^,resin,thermoplastic,polyethylene,/.test(this.props.resin) &&
+            <PathList state={this.props.resin}
+                      items={this.state.polyethylenes}
+                      onClick={this.props.onResin}>
               Polyethylene
             </PathList>
           }
@@ -154,42 +135,48 @@ class PathSelect extends Component {
         <Col>
           <Button className="m-2" color="primary" size="lg" block
                   onClick={this.handleReinforcementToggle}
-                  active={/^,reinforcement,?/.test(this.state.reinforcement)}>
+                  active={/^,reinforcement,?/.test(this.props.reinforcement)}>
             Reinforcement
           </Button>
-          {/^,reinforcement,($|fiber,)/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.fibers}
-                      onClick={this.handleReinforcement}>
+          {/^,reinforcement,($|fiber,)/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.fibers}
+                      onClick={this.props.onReinforcement}>
               Fiber
             </PathList>
           }
-          {/^,reinforcement,($|particulate,)/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.particulates}
-                      onClick={this.handleReinforcement}>
+          {/^,reinforcement,($|particulate,)/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.particulates}
+                      onClick={this.props.onReinforcement}>
               Particulate
             </PathList>
           }
-          {/^,reinforcement,fiber,graphite,/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.graphites}
-                      onClick={this.handleReinforcement}>
+          {/^,reinforcement,fiber,graphite,/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.graphites}
+                      onClick={this.props.onReinforcement}>
               Graphite
             </PathList>
           }
-          {/^,reinforcement,fiber,glass,/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.glasses}
-                      onClick={this.handleReinforcement}>
+          {/^,reinforcement,fiber,glass,/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.glasses}
+                      onClick={this.props.onReinforcement}>
               Glass
             </PathList>
           }
-          {/^,reinforcement,fiber,aramid,/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.aramids}
-                      onClick={this.handleReinforcement}>
-              Aramids
+          {/^,reinforcement,fiber,aramid,/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.aramids}
+                      onClick={this.props.onReinforcement}>
+              Aramid
             </PathList>
           }
-          {/^,reinforcement,fiber,natural,/.test(this.state.reinforcement) &&
-            <PathList state={this.state.reinforcement} items={this.state.naturals}
-                      onClick={this.handleReinforcement}>
+          {/^,reinforcement,fiber,natural,/.test(this.props.reinforcement) &&
+            <PathList state={this.props.reinforcement}
+                      items={this.state.naturals}
+                      onClick={this.props.onReinforcement}>
               Natural
             </PathList>
           }
@@ -197,12 +184,13 @@ class PathSelect extends Component {
         <Col>
           <Button className="m-2" color="primary" size="lg" block
                   onClick={this.handleFormToggle}
-                  active={/^,form,?/.test(this.state.form)}>
+                  active={/^,form,?/.test(this.props.form)}>
             Form
           </Button>
-          {/^,form,/.test(this.state.form) &&
-            <PathList state={this.state.form} items={this.state.forms}
-                      onClick={this.handleForm}>
+          {/^,form,/.test(this.props.form) &&
+            <PathList state={this.props.form}
+                      items={this.state.forms}
+                      onClick={this.props.onForm}>
               Form
             </PathList>
           }
