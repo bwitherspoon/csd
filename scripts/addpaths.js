@@ -215,7 +215,7 @@ const paths = [
     value: ',reinforcement,fiber,aramid,kevlar',
   },
   {
-    label: 'Kevlar',
+    label: 'Twaron',
     value: ',reinforcement,fiber,aramid,twaron',
   },
   {
