@@ -17,11 +17,12 @@ class ScrapDocument extends Component {
 
   componentDidMount() {
     const paths = {
-      resin: this.props.data.resin,
-      reinforcement: this.props.data.reinforcement,
-      form: this.props.data.form,
+      resin: this.props.resin,
+      reinforcement: this.props.reinforcement,
+      form: this.props.form,
     }
     for (const name in paths) {
+      if (!paths[name]) continue;
       fetch('/path/' + paths[name])
         .then(res => res.json())
         .then(
@@ -38,7 +39,7 @@ class ScrapDocument extends Component {
   }
 
   render() {
-    const notes = this.markdown.render(this.props.data.research_notes)
+    const notes = this.markdown.render(this.props.research_notes)
     return (
       <div className="p-5 m-4 border">
         <Row>
@@ -57,23 +58,23 @@ class ScrapDocument extends Component {
             </p>
             <p>
               <strong>Origin Company: </strong>
-              {this.props.data.origin_company}
+              {this.props.origin_company}
             </p>
             <p>
               <strong>Original Material: </strong>
-              {this.props.data.original_material}
+              {this.props.original_material}
             </p>
             <p>
               <strong>Manufacturing Method: </strong>
-              <a href="#">{this.props.data.manufacturing_method}</a>
+              <a href="#">{this.props.manufacturing_method}</a>
             </p>
             <p>
               <strong>Current Location: </strong>
-              {this.props.data.current_location}
+              {this.props.current_location}
             </p>
             <p>
               <strong>Quantity: </strong>
-              {this.props.data.quantity} kg
+              {this.props.quantity} kg
             </p>
             <p>
               <strong>Research Notes:</strong>

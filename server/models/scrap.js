@@ -9,6 +9,7 @@ const ScrapSchema = mongoose.Schema({
   manufacturing_method: String,
   current_location: String,
   quantity: Number,
+  references: String,
   research_notes: String
 })
 
