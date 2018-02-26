@@ -26,7 +26,20 @@ class SearchPage extends Component {
   }
 
   handleSearch() {
-    // TODO
+    fetch('/scrap/search', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      credentials: 'same-origin',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      redirect: 'error',
+    })
+      .then(res => res.json())
+      .then(
+        res => console.log(res),
+        err => console.error(err)
+      )
   }
 
   handleResin(resin) {

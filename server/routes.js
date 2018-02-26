@@ -3,7 +3,6 @@ const bodyParser = require('body-parser')
 
 const User = require('./models/user')
 
-const authenticate = require('./authenticate')
 const path = require('./routes/path')
 const scrap = require('./routes/scrap')
 
@@ -13,7 +12,7 @@ const parser = bodyParser.urlencoded({
 })
 
 router.use('/path', path)
-router.use('/scrap', authenticate, scrap)
+router.use('/scrap', scrap)
 
 router.get('/', (req, res) => {
   res.render('index')
