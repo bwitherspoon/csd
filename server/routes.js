@@ -66,7 +66,7 @@ router.all('/logout', (req, res) => {
 })
 
 router.get('/admin', authenticate, (req, res) => {
-  res.render('admin')
+  res.render('index')
 })
 
 router.get('/about', (req, res) => {
