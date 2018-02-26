@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Alert } from 'reactstrap'
-import Header from './components/Header'
+import PageHeader from './components/PageHeader'
 import ScrapDocument from './components/ScrapDocument'
 import ScrapForm from './components/ScrapForm'
 
@@ -72,7 +72,7 @@ class App extends Component {
     }
     return (
       <Container>
-        <Header onNavigate={this.handleNavigate.bind(this)} />
+        <PageHeader onNavigate={this.handleNavigate.bind(this)} />
         {alert}
         {body}
       </Container>

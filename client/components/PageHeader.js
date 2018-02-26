@@ -5,7 +5,7 @@ import CogIcon from '@fortawesome/fontawesome-free-solid/faCog'
 import FolderIcon from '@fortawesome/fontawesome-free-solid/faFolder'
 import UserIcon from '@fortawesome/fontawesome-free-solid/faUser'
 
-class Header extends Component {
+class PageHeader extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -58,4 +58,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default PageHeader
