@@ -3,7 +3,10 @@ const express = require('express')
 const router = express.Router()
 
 router.all('/', (req, res) => {
-  res.status(400).send("Bad Request")
+  if (req.session && req.session.user)
+    res.status(200).send("OK")
+  else
+    res.status(403).send("Forbidden")
 })
 
 module.exports = router
