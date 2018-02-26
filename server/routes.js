@@ -14,10 +14,7 @@ const parser = bodyParser.urlencoded({
 router.use('/scrap', authenticate, scrap)
 
 router.get('/', (req, res) => {
-  res.render('home', {
-    view: 'home',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
+  res.render('index')
 })
 
 router.get('/login', (req, res) => {
@@ -63,44 +60,6 @@ router.all('/logout', (req, res) => {
       }
     })
   }
-})
-
-router.get('/admin', authenticate, (req, res) => {
-  res.render('index')
-})
-
-router.get('/about', (req, res) => {
-  res.render('about', {
-    view: 'about',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-
-router.get('/modules', (req, res) => {
-  res.render('modules', {
-    view: 'learn',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-
-router.get('/overview', (req, res) => {
-  res.render('overview', {
-    view: 'learn',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-
-router.get('/contact', (req, res) => {
-  res.render('contact', {
-    view: 'contact',
-    authenticated: Boolean(req.session) && Boolean(req.session.user)
-  })
-})
-
-router.get('/search', (req, res) => {
-  res.render('search', {
-    view: 'search',
-  })
 })
 
 module.exports = router
