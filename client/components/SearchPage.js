@@ -70,7 +70,7 @@ class SearchPage extends Component {
       content = this.state.result.map((doc, idx) =>
         <ScrapDocument key={idx} {...doc} />
       )
-    else
+    else if (this.state.resin || this.state.reinforcement || this.state.form) {
       content =
         <div>
           <PathSelect onResin={this.handleResin}
@@ -92,6 +92,13 @@ class SearchPage extends Component {
             </Col>
           </Row>
         </div>
+      } else {
+        content =
+          <PathSelect onResin={this.handleResin}
+                      onReinforcement={this.handleReinforcement}
+                      onForm={this.handleForm}
+                      {...this.state} />
+      }
     return content
   }
 }
