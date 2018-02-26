@@ -29,7 +29,7 @@ class CreatePage extends Component {
   }
 
   handleSave() {
-    fetch('/scrap', {
+    fetch('/scrap/create', {
       method: 'POST',
       body: JSON.stringify(this.state.data),
       credentials: 'same-origin',

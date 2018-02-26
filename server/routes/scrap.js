@@ -5,7 +5,7 @@ const Scrap = require('../models/scrap')
 const router = express.Router()
 const json = express.json()
 
-router.post('/', json, (req, res) => {
+router.post('/create', json, (req, res) => {
   if (!req.body) res.status(400).send('Bad Request')
   Scrap.create(req.body, (err, doc) => {
     if (err)
