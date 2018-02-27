@@ -11,7 +11,10 @@ function HomePage(props) {
           Find information on composite scrap, available composite scrap, and
           existing composite recyclers.
         </p>
-        <Button color="primary" size="lg">Search</Button>
+        <Button color="primary" size="lg"
+                onClick={() => props.onNavigate('search')}>
+          Search
+        </Button>
       </Jumbotron>
       <Row>
         <Col>
@@ -20,7 +23,7 @@ function HomePage(props) {
             A composite is a material made from two or more separate materials
             or elements that when combined create a stronger material.
           </p>
-          <Button>Learn more</Button>
+          <Button onClick={() => location.href = 'http://compositeslab.com/composites-101/'}>Learn more</Button>
         </Col>
         <Col>
           <h3>A composites industry overview</h3>
@@ -28,7 +31,7 @@ function HomePage(props) {
             Read more about the composites industry and find additional
             resources.
           </p>
-          <Button>View details</Button>
+          <Button onClick={() => props.onNavigate('overview')}>View details</Button>
         </Col>
         <Col>
           <h3>The CRTEP project</h3>
@@ -36,7 +39,9 @@ function HomePage(props) {
             Read more about the Composites Recycling Technician Education
             Program (CRTEP) and explore the educational modules.
           </p>
-          <Button>View details</Button>
+          <Button onClick={() => props.onNavigate('about')}>
+            View details
+          </Button>
         </Col>
       </Row>
     </div>

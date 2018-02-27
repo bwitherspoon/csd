@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Alert } from 'reactstrap'
 import PageHeader from './components/PageHeader'
+import AboutPage from './components/AboutPage'
+import ContactPage from './components/ContactPage'
 import HomePage from './components/HomePage'
 import CreatePage from './components/CreatePage'
 import SearchPage from './components/SearchPage'
@@ -11,6 +13,7 @@ class App extends Component {
     this.state = {
       page: 'home'
     }
+    this.handleNavigate = this.handleNavigate.bind(this)
   }
 
   handleNavigate(page) {
@@ -20,8 +23,14 @@ class App extends Component {
   render() {
     let page
     switch (this.state.page) {
+      case 'about':
+        page = <AboutPage onNavigate={this.handleNavigate} />
+        break
+      case 'contact':
+        page = <ContactPage />
+        break
       case 'home':
-        page = <HomePage />
+        page = <HomePage onNavigate={this.handleNavigate} />
         break
       case 'create':
         page = <CreatePage />
@@ -33,7 +42,7 @@ class App extends Component {
     return (
       <Container>
         <PageHeader page={this.state.page}
-                    onNavigate={this.handleNavigate.bind(this)} />
+                    onNavigate={this.handleNavigate} />
         {page}
       </Container>
     )
