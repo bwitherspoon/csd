@@ -156,7 +156,7 @@ class PathSelect extends Component {
             <PathList state={this.props.reinforcement}
                       items={this.state.graphites}
                       onClick={this.props.onReinforcement}>
-              Graphite
+              Carbon Fiber
             </PathList>
           }
           {/^,reinforcement,fiber,glass,/.test(this.props.reinforcement) &&
