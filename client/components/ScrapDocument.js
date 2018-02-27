@@ -59,7 +59,7 @@ class ScrapDocument extends Component {
             {this.props.images && this.props.images.map((image, index) =>
               <figure key={image}>
                 <img className="mb-2 img-fluid" src={'/image/' + image} alt="Image" />
-                <figcaption>{'Caption ' + (index + 1)}</figcaption>
+                <figcaption>{this.props.captions && index < this.props.captions.length && this.props.captions[index]}</figcaption>
               </figure>
             )}
           </Col>
