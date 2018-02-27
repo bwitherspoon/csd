@@ -72,7 +72,7 @@ class SearchPage extends Component {
           <ScrapDocument key={idx} {...doc} />
           <Row className="justify-content-center">
             <h3 className="m-4">Users Also Viewed</h3>
-            <CardDeck className="m-4">
+            <CardDeck className="m-2">
               <Card>
                 <CardImg top src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Preview image" />
                 <CardBody>
@@ -82,6 +82,7 @@ class SearchPage extends Component {
                   <CardText>
                     Epoxy resin
                   </CardText>
+                  <Button>Details</Button>
                 </CardBody>
               </Card>
               <Card>
@@ -93,6 +94,7 @@ class SearchPage extends Component {
                   <CardText>
                     Aramid Fiber
                   </CardText>
+                  <Button>Details</Button>
                 </CardBody>
               </Card>
               <Card>
@@ -104,6 +106,7 @@ class SearchPage extends Component {
                   <CardText>
                     Acrylonitrile butadiene styrene (ABS)
                   </CardText>
+                  <Button>Details</Button>
                 </CardBody>
               </Card>
             </CardDeck>
