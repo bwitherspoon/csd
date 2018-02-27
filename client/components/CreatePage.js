@@ -48,14 +48,13 @@ class CreatePage extends Component {
     for (let index = 0; index < files.length; index++) {
       images.append('images', files[index])
     }
-    fetch('/image', {
+    fetch('/image/upload', {
       method: 'POST',
       body: images,
       credentials: 'same-origin',
       redirect: 'error',
     })
       .then(res => res.json())
-      .then(res => res.map(obj => obj._id))
       .catch(err => console.error(err))
       .then(arr => {
         const data = {

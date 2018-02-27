@@ -1,0 +1,10 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Image Upload
+  body
+    form(method='POST' enctype='multipart/form-data')
+      input(type='file' name='images' accept='image/*' multiple required)
+      button Upload

@@ -6,15 +6,7 @@ const Image = require('../models/image')
 
 const router = express.Router()
 
-router.get('/:id', (req, res) => {
-  Image.findOne({ _id: req.params.id }, (err, img) => {
-    if (err) return res.status(500).send("Internal Server Error")
-    if (!img) return res.status(404).send("Resource Not Found")
-    res.type(img.type).send(img.data)
-  })
-})
-
-router.post('/', fileupload(), (req, res) => {
+router.post('/upload', authenticate, fileupload(), (req, res) => {
   if (!req.files || !req.files.images)
     return res.status(400).send("Invalid Request")
   const files = Array.isArray(req.files.images) ? req.files.images : [req.files.images]
@@ -25,7 +17,17 @@ router.post('/', fileupload(), (req, res) => {
   }}),
   (err, arr) => {
     if (err) return res.status(500).send('Internal Server Error')
-    res.json(arr)
+    res.json(arr.map(img => img._id))
+  })
+})
+
+router.get('/upload', authenticate, (req, res) => res.render('upload'))
+
+router.get('/:id', (req, res) => {
+  Image.findOne({ _id: req.params.id }, (err, img) => {
+    if (err) return res.status(500).send("Internal Server Error")
+    if (!img) return res.status(404).send("Resource Not Found")
+    res.type(img.type).send(img.data)
   })
 })
 
