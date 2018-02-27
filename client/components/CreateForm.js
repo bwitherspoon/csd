@@ -13,6 +13,7 @@ class CreateForm extends Component {
     for (const name in CreateForm.defaults)
       if (event.target[name] && event.target[name].value)
         data[name] = event.target[name].value
+    data.files = event.target.images.files
     this.props.onCreate(data)
     event.preventDefault()
   }
@@ -49,9 +50,9 @@ class CreateForm extends Component {
               </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label for="image">Images</Label>
-              <Input type="file" name="image" id="image" accept="image/*" multiple
-                     defaultValue={this.props.image}
+              <Label for="images">Images</Label>
+              <Input type="file" name="images" id="images" accept="image/*" multiple
+                     defaultValue={this.props.images}
                      disabled={this.props.disabled} />
             </FormGroup>
           </Col>

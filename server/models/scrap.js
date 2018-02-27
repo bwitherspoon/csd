@@ -10,7 +10,8 @@ const ScrapSchema = mongoose.Schema({
   current_location: String,
   quantity: Number,
   references: String,
-  research_notes: String
+  research_notes: String,
+  images: [String],
 })
 
 module.exports = mongoose.model('Scrap', ScrapSchema)

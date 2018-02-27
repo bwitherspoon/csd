@@ -6,6 +6,7 @@ const User = require('./models/user')
 const path = require('./routes/path')
 const user = require('./routes/user')
 const scrap = require('./routes/scrap')
+const image = require('./routes/image')
 
 const router = express.Router()
 const parser = bodyParser.urlencoded({
@@ -15,6 +16,7 @@ const parser = bodyParser.urlencoded({
 router.use('/path', path)
 router.use('/user', user)
 router.use('/scrap', scrap)
+router.use('/image', image)
 
 router.get('/', (req, res) => {
   res.render('index')

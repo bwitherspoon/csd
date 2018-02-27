@@ -43,30 +43,48 @@ class CreatePage extends Component {
   }
 
   handleSave() {
-    const data = {
-      resin: this.state.resin,
-      reinforcement: this.state.reinforcement,
-      form: this.state.form,
-      ...this.state.data
+    const { files, ...other } = this.state.data
+
+    const images = new FormData()
+    for (let index = 0; index < files.length; index++) {
+      images.append('images', files[index])
     }
-    fetch('/scrap/create', {
+    fetch('/image', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: images,
       credentials: 'same-origin',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
       redirect: 'error',
     })
-    .then(res => {
-      this.setState({
-        preview: !res.ok,
-        status: res.statusText
+      .then(res => res.json())
+      .then(res => res.map(obj => obj._id))
+      .catch(err => console.error(err))
+      .then(arr => {
+        const data = {
+          resin: this.state.resin,
+          reinforcement: this.state.reinforcement,
+          form: this.state.form,
+          images: arr,
+          ...other
+        }
+        fetch('/scrap/create', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          credentials: 'same-origin',
+          headers: new Headers({
+            'Content-Type': 'application/json',
+          }),
+          redirect: 'error',
+        })
+        .then(res => {
+          this.setState({
+            preview: !res.ok,
+            status: res.statusText
+          })
+        })
+        .catch(err => {
+          this.setState({ status: err.message })
+        })
       })
-    })
-    .catch(err => {
-      this.setState({ status: err.message })
-    })
   }
 
   handleCancel() {
