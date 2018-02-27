@@ -201,24 +201,44 @@ const paths = [
   },
   // Graphites
   {
+    label: 'Low strength',
+    value: ',reinforcement,fiber,graphite,lowstrength',
+  },
+  {
+    label: 'Standard strength',
+    value: ',reinforcement,fiber,graphite,standardstrength',
+  },
+  {
+    label: 'Intermediate strength',
+    value: ',reinforcement,fiber,graphite,intermediatestrength',
+  },
+  {
+    label: 'High strength',
+    value: ',reinforcement,fiber,graphite,highstrength',
+  },
+  {
+    label: 'Ultra high strength',
+    value: ',reinforcement,fiber,graphite,ultrahighstrength',
+  },
+  {
     label: 'Low modulus',
-    value: ',reinforcement,fiber,graphite,low',
+    value: ',reinforcement,fiber,graphite,lowmodulus',
   },
   {
     label: 'Standard modulus',
-    value: ',reinforcement,fiber,graphite,standard',
+    value: ',reinforcement,fiber,graphite,standardmodulus',
   },
   {
     label: 'Intermediate modulus',
-    value: ',reinforcement,fiber,graphite,intermediate',
+    value: ',reinforcement,fiber,graphite,intermediatemodulus',
   },
   {
     label: 'High modulus',
-    value: ',reinforcement,fiber,graphite,high',
+    value: ',reinforcement,fiber,graphite,highmodulus',
   },
   {
-    label: 'Ultra modulus',
-    value: ',reinforcement,fiber,graphite,ultrahigh',
+    label: 'Ultra high modulus',
+    value: ',reinforcement,fiber,graphite,ultrahighmodulus',
   },
   {
     label: 'Any',
@@ -331,6 +351,10 @@ const paths = [
   },
   // Forms
   {
+   label: 'Granulated',
+   value: ',form,granulated',
+  },
+  {
    label: 'Ground',
    value: ',form,ground',
   },
@@ -353,6 +377,10 @@ const paths = [
    value: ',form,bulk',
   },
   {
+   label: 'End of Life Component',
+   value: ',form,endoflife',
+  },
+  {
    label: 'Chopped tape',
    value: ',form,choppedtape',
   },
@@ -367,6 +395,28 @@ const paths = [
   {
    label: 'Prepreg',
    value: ',form,prepreg',
+  },
+  {
+   label: 'Pelletized / Pellets',
+   value: ',form,pellets',
+  },
+  {
+   label: 'Cured Resin',
+   value: ',form,curedresin',
+  },
+  {
+   label: 'Reclaimed Fiber',
+   value: ',form,reclaimedfiber',
+  },
+  {
+   label: 'Long Fiber Thermoplastic',
+   short: 'LFT',
+   value: ',form,lft',
+  },
+  {
+   label: 'Machining Residue',
+   short: 'MR',
+   value: ',form,mr',
   },
   {
     label: 'Any',
