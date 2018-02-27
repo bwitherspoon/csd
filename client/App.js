@@ -4,6 +4,7 @@ import PageHeader from './components/PageHeader'
 import AboutPage from './components/AboutPage'
 import ContactPage from './components/ContactPage'
 import HomePage from './components/HomePage'
+import ModulesPage from './components/ModulesPage'
 import CreatePage from './components/CreatePage'
 import SearchPage from './components/SearchPage'
 
@@ -31,6 +32,9 @@ class App extends Component {
         break
       case 'home':
         page = <HomePage onNavigate={this.handleNavigate} />
+        break
+      case 'learn':
+        page = <ModulesPage />
         break
       case 'create':
         page = <CreatePage />
