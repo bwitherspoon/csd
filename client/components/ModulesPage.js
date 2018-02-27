@@ -97,7 +97,7 @@ class ModulesPage extends Component {
             </Row>
           </TabPane>
           {[1, 2, 3, 5, 6, 7, 8, 9].map(n =>
-            <TabPane tabId={(n+1).toString()}>
+            <TabPane key={n} tabId={(n+1).toString()}>
               <Row className="m-4">
                 <Col>
                   <h3 className="text-center">
