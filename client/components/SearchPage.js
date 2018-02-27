@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col, Button, CardDeck, Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap'
 import ScrapDocument from './ScrapDocument'
 import PathSelect from './PathSelect'
 
@@ -68,7 +68,60 @@ class SearchPage extends Component {
     let content
     if (this.state.result)
       content = this.state.result.map((doc, idx) =>
-        <ScrapDocument key={idx} {...doc} />
+        <div>
+          <ScrapDocument key={idx} {...doc} />
+          <Row className="justify-content-center">
+            <h3 className="m-4">Users Also Viewed</h3>
+            <CardDeck className="m-4">
+              <Card>
+                <CardImg top src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Preview image" />
+                <CardBody>
+                  <CardTitle>
+                    /resin/thermoset/epoxy
+                  </CardTitle>
+                  <CardText>
+                    Epoxy resin
+                  </CardText>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardImg top src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Preview image" />
+                <CardBody>
+                  <CardTitle>
+                    /reinforcement/fiber/aramid
+                  </CardTitle>
+                  <CardText>
+                    Aramid Fiber
+                  </CardText>
+                </CardBody>
+              </Card>
+              <Card>
+                <CardImg top src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Preview image" />
+                <CardBody>
+                  <CardTitle>
+                    /resin/thermoplastic/abs
+                  </CardTitle>
+                  <CardText>
+                    Acrylonitrile butadiene styrene (ABS)
+                  </CardText>
+                </CardBody>
+              </Card>
+            </CardDeck>
+          </Row>
+          <Row>
+            <Col>
+              <Button className="m-4" color="primary" size="lg" block>
+                Submit Query
+              </Button>
+            </Col>
+            <Col>
+              <Button className="m-4" color="primary" size="lg" block>
+                Save To Folder
+              </Button>
+            </Col>
+          </Row>
+          <hr />
+        </div>
       )
     else if (this.state.resin || this.state.reinforcement || this.state.form) {
       content =
