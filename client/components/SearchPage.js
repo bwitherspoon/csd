@@ -68,8 +68,8 @@ class SearchPage extends Component {
     let content
     if (this.state.result)
       content = this.state.result.map((doc, idx) =>
-        <div>
-          <ScrapDocument key={idx} {...doc} />
+        <div key={idx}>
+          <ScrapDocument {...doc} />
           <Row className="justify-content-center">
             <h3 className="m-4">Users Also Viewed</h3>
             <CardDeck className="m-2">
