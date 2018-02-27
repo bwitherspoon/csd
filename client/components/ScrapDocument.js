@@ -16,15 +16,15 @@ class ScrapDocument extends Component {
           <Col>
             <p>
               <strong>Resin: </strong>
-              {this.props.resin}
+              {this.props.resin && this.props.resin.replace(/,/g, '/')}
             </p>
             <p>
               <strong>Reinforcement: </strong>
-              {this.props.reinforcement}
+              {this.props.reinforcement && this.props.reinforcement.replace(/,/g, '/')}
             </p>
             <p>
               <strong>Form: </strong>
-              {this.props.form}
+              {this.props.form && this.props.form.replace(/,/g, '/')}
             </p>
             <p>
               <strong>Origin Company: </strong>
