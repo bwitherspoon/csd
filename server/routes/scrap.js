@@ -12,7 +12,7 @@ router.post('/create', authenticate, json, (req, res) => {
     if (err)
       res.status(400).send('Bad Request')
     else
-      res.status(200).send('OK')
+      res.json(doc)
   })
 })
 

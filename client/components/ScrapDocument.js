@@ -5,35 +5,7 @@ import Remarkable from 'remarkable'
 class ScrapDocument extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      resin: undefined,
-      reinforcement: undefined,
-      form: undefined,
-    }
     this.markdown = new Remarkable()
-  }
-
-  componentDidMount() {
-    const paths = {
-      resin: this.props.resin,
-      reinforcement: this.props.reinforcement,
-      form: this.props.form,
-    }
-    for (const name in paths) {
-      if (!paths[name]) continue;
-      fetch('/path/' + paths[name])
-        .then(res => res.json())
-        .then(
-          res => {
-            if (res.length != 0) {
-              const state = {}
-              state[name] = res[0].label + (res[0].short ? ' (' + res[0].short + ')' : '')
-              this.setState(state)
-            }
-          },
-          err => console.error(err)
-        )
-    }
   }
 
   render() {
@@ -44,15 +16,15 @@ class ScrapDocument extends Component {
           <Col>
             <p>
               <strong>Resin: </strong>
-              {this.state.resin}
+              {this.props.resin}
             </p>
             <p>
               <strong>Reinforcement: </strong>
-              {this.state.reinforcement}
+              {this.props.reinforcement}
             </p>
             <p>
               <strong>Form: </strong>
-              {this.state.form}
+              {this.props.form}
             </p>
             <p>
               <strong>Origin Company: </strong>
@@ -83,8 +55,13 @@ class ScrapDocument extends Component {
             </p>
             <div className="m-4" dangerouslySetInnerHTML={{ __html: notes }}/>
           </Col>
-          <Col sm="auto">
-            <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Scrap image" />
+          <Col sm="3">
+            {this.props.images && this.props.images.map((image, index) =>
+              <figure key={image}>
+                <img className="mb-2 img-fluid" src={'/image/' + image} alt="Image" />
+                <figcaption>{'Caption ' + (index + 1)}</figcaption>
+              </figure>
+            )}
           </Col>
         </Row>
       </div>

@@ -12,6 +12,7 @@ const ScrapSchema = mongoose.Schema({
   references: String,
   research_notes: String,
   images: [String],
+  captions: [String],
 })
 
 module.exports = mongoose.model('Scrap', ScrapSchema)

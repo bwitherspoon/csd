@@ -44,7 +44,6 @@ class CreatePage extends Component {
 
   handleSave() {
     const { files, ...other } = this.state.data
-
     const images = new FormData()
     for (let index = 0; index < files.length; index++) {
       images.append('images', files[index])
@@ -111,9 +110,7 @@ class CreatePage extends Component {
     if (this.state.preview) {
       body =
         <div>
-          <ScrapDocument onCancel={this.handleCancel}
-                         onSave={this.handleSave}
-                         resin={this.state.resin}
+          <ScrapDocument resin={this.state.resin}
                          reinforcement={this.state.reinforcement}
                          form={this.state.form}
                          {...this.state.data} />

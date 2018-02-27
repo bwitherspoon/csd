@@ -14,6 +14,8 @@ class CreateForm extends Component {
       if (event.target[name] && event.target[name].value)
         data[name] = event.target[name].value
     data.files = event.target.images.files
+    if (event.target.caption1.value || event.target.caption2.value)
+      data.captions = [event.target.caption1.value, event.target.caption2.value]
     this.props.onCreate(data)
     event.preventDefault()
   }
@@ -51,7 +53,7 @@ class CreateForm extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="images">Images</Label>
-              <Input type="file" name="images" id="images" accept="image/*" multiple
+              <Input type="file" name="images" id="images" accept="image/*" multiple required
                      defaultValue={this.props.images}
                      disabled={this.props.disabled} />
             </FormGroup>
@@ -73,6 +75,18 @@ class CreateForm extends Component {
               <Label for="references">References</Label>
               <Input type="text" name="references" id="references"
                      defaultValue={this.props.references}
+                     disabled={this.props.disabled} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="caption1">Caption 1</Label>
+              <Input type="text" name="caption1" id="caption1"
+                     defaultValue={this.props.caption1}
+                     disabled={this.props.disabled} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="caption2">Caption 2</Label>
+              <Input type="text" name="caption2" id="caption2"
+                     defaultValue={this.props.caption2}
                      disabled={this.props.disabled} />
             </FormGroup>
           </Col>
